@@ -10,10 +10,4 @@ The aim of this project is to create a simple Minecraft-Esque game.
   * `Mouse` for pitch, yaw and rotation
 - Collision detection on cubes
 
-
-###Pre-Requisites
-
-- SDL2
-- OpenGL
-
 &copy; 2014 - George Vicarey

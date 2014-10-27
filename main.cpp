@@ -32,8 +32,50 @@ int main(int argc, char *argv[]) {
 		SDL_GL_SwapWindow(window);
 	}
 
+	float vertices[] = {
+			0.0f, 0.5f,
+			0.5f, -0.5f,
+			-0.5f, -0.5f
+	};
+
 	GLuint vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
+
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	static const GLchar *vertexSource =
+			"#version 150\n"
+			"in vec2 position;"
+			"void main()"
+			"{"
+				" gl_Position = vec4(position, 0.0, 1.0);"
+			"}\0";
+
+	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vertexSource, NULL);
+	glCompileShader(vertexShader);
+
+	static const GLchar *fragmentSource =
+			"#version 150\n"
+			"out vec4 outColour;"
+			"void main()"
+			"{"
+				" outColour = vec4(1.0, 1.0, 1.0, 1.0);"
+			"}\0";
+
+	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+	glCompileShader(fragmentShader);
+
+	GLuint shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+
+	glBindFragDataLocation(shaderProgram, 0, "outColour");
+
+	// up to Making the link between vertex data and attributes
+	//https://open.gl/drawing
 
 	printf("%u\n", vertexBuffer);
 

@@ -1,94 +1,44 @@
 /*
  * main.cpp
  *
- *  Created on: 26 Oct 2014
+ *  Created on: 27 Oct 2014
  *      Author: George Vicarey
  */
 
-// Usng SDL
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
-#include <stdio.h>
+#include <SDL2/SDL_opengl.h>
 
-// screen dimensions
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+int main(int argc, char *argv[]) {
+	SDL_Init(SDL_INIT_VIDEO);
 
-// Start SDL & open window
-bool init();
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
-// quits gracefully
-void cleanUp();
+	SDL_Window* window = SDL_CreateWindow("OpenGL Test", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
 
-// the window
-SDL_Window* window = NULL;
+	SDL_GLContext context = SDL_GL_CreateContext(window);
 
-bool init(){
-	// init flag
-	bool success = true;
+	glewExperimental = GL_TRUE;
+	glewInit();
 
-
-	// INIT SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		printf("SDL Could not initialise, SDL_Error: %s\n", SDL_GetError() );
-		success = false;
-	} else {
-		// create window
-		window = SDL_CreateWindow("My Voxel Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-
-		if (window == NULL ) {
-			printf("Window couldn't be created, SDL_Error: %s\n", SDL_GetError() );
-			success = false;
-		} else {
-			// wait two seconds
-			SDL_Delay(2000);
+	SDL_Event windowEvent;
+	while (true) {
+		if (SDL_PollEvent(&windowEvent)) {
+			if (windowEvent.type == SDL_QUIT) break;
 		}
+
+		SDL_GL_SwapWindow(window);
 	}
-	return success;
-}
 
-void cleanUp(){
-	// destroy window
-	SDL_DestroyWindow(window);
+	GLuint vertexBuffer;
+	glGenBuffers(1, &vertexBuffer);
 
-	//quit sdl
+	printf("%u\n", vertexBuffer);
+
+	SDL_GL_DeleteContext(context);
 	SDL_Quit();
-}
-
-int main(){
-	// Start up SDL and open window
-	if (!init()) {
-		printf("failes to initialise");
-	} else {
-		// main loop flag
-		bool quit = false;
-
-		//event handler
-		SDL_Event e;
-
-		//while window not closed
-		while (!quit) {
-			//handle event queue
-			while (SDL_PollEvent(&e) !=0) {
-				//user requested quit
-				if (e.type == SDL_QUIT) {
-					quit = true;
-				}
-			}
-		}
-	}
-
-	// free resources & close SDL
-	cleanUp();
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-

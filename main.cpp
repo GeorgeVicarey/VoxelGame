@@ -5,26 +5,29 @@
  *      Author: George Vicarey
  */
 
-
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <time.h>
 
 // Vertex source inline
 const GLchar *vertexSource = "#version 150\n"
 		"in vec2 position;"
+		"in vec3 color;"
+		"out vec3 Color;"
 		"void main()"
 		"{"
+		"Color = color;"
 		" gl_Position = vec4(position, 0.0, 1.0);"
 		"}";
 
-
 // Fragment source inline
 const GLchar *fragmentSource = "#version 150\n"
+		"in vec3 Color;"
 		"out vec4 outColour;"
 		"void main()"
 		"{"
-		" outColour = vec4(1.0, 1.0, 1.0, 1.0);"
+		" outColour = vec4(Color, 1.0);"
 		"}";
 
 int main(int argc, char *argv[]) {
@@ -53,7 +56,8 @@ int main(int argc, char *argv[]) {
 	GLuint vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
 
-	float vertices[] = { 0.0f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f };
+	float vertices[] = { 0.0f, 0.5f, 1.0f, 0.0f, 0.0f, 0.5f, -0.5f, 0.0f, 1.0f,
+			0.0f, -0.5f, -0.5f, 0.0f, 0.0f, 1.0f };
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -62,7 +66,6 @@ int main(int argc, char *argv[]) {
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	glCompileShader(vertexShader);
-
 
 	// create and compile fragment shader
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -79,8 +82,17 @@ int main(int argc, char *argv[]) {
 
 	// specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(posAttrib);
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
+			0);
+
+	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+	glEnableVertexAttribArray(colAttrib);
+	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
+			(void*)(2*sizeof(float)));
+
+	//get colection for triangle colour
+	GLint uniColor = glGetUniformLocation(shaderProgram, "triangleColor");
 
 	// handle events
 	SDL_Event e;
@@ -90,6 +102,10 @@ int main(int argc, char *argv[]) {
 			if (e.type == SDL_QUIT)
 				break;
 		}
+		//set colour of triangle
+//		GLfloat time = (GLfloat)clock() / (GLfloat)CLOCKS_PER_SEC;
+//
+//        glUniform3f(uniColor, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
 		// clear screen to black
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);

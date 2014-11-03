@@ -60,12 +60,12 @@ int main(int argc, char *argv[]) {
 	GLuint ebo;
 	glGenBuffers(1, &ebo);
 
-	// X, Y, Z, R, G, B
 	float vertices[] = {
-	    -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // Top-left
-	     0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // Top-right
-	     0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	    -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, // Bottom-left
+		// X,     Y,    Z,    R,    G,   B
+	    -0.5f,  0.5f, 0.5f, 1.0f, 0.0f, 0.0f, // Top-left
+	     0.5f,  0.5f, 0.5f, 0.0f, 1.0f, 0.0f, // Top-right
+	     0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
+	    -0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, // Bottom-left
 	};
 
 	GLuint elements[] = {
@@ -100,13 +100,13 @@ int main(int argc, char *argv[]) {
 	// specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
+	glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
 			0);
 
 	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
 	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-			(void*)(2*sizeof(float)));
+	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+			(void*)(3*sizeof(float)));
 
 	// handle events
 	SDL_Event e;

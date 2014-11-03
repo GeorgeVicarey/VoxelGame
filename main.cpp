@@ -5,10 +5,12 @@
  *      Author: George Vicarey
  */
 
+
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
+// Vertex source inline
 const GLchar *vertexSource = "#version 150\n"
 		"in vec2 position;"
 		"void main()"
@@ -16,6 +18,8 @@ const GLchar *vertexSource = "#version 150\n"
 		" gl_Position = vec4(position, 0.0, 1.0);"
 		"}";
 
+
+// Fragment source inline
 const GLchar *fragmentSource = "#version 150\n"
 		"out vec4 outColour;"
 		"void main()"

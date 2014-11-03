@@ -8,27 +8,28 @@
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <SOIL.h>
 #include <time.h>
+#include <string>
 
-// Vertex source inline
-const GLchar *vertexSource = "#version 150\n"
-		"in vec2 position;"
-		"in vec3 color;"
-		"out vec3 Color;"
-		"void main()"
-		"{"
-		"Color = color;"
-		" gl_Position = vec4(position, 0.0, 1.0);"
-		"}";
+// shader  source inline
+const GLchar* vertexSource =
+    "#version 150 core\n"
+    "in vec2 position;"
+    "in vec3 color;"
+    "out vec3 Color;"
+    "void main() {"
+    "   Color = color;"
+    "   gl_Position = vec4(position, 0.0, 1.0);"
+    "}";
 
-// Fragment source inline
-const GLchar *fragmentSource = "#version 150\n"
-		"in vec3 Color;"
-		"out vec4 outColour;"
-		"void main()"
-		"{"
-		" outColour = vec4(Color, 1.0);"
-		"}";
+const GLchar* fragmentSource =
+    "#version 150 core\n"
+    "in vec3 Color;"
+    "out vec4 outColor;"
+    "void main() {"
+    "   outColor = vec4(Color, 1.0);"
+    "}";
 
 int main(int argc, char *argv[]) {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -52,18 +53,9 @@ int main(int argc, char *argv[]) {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	// create element buffer
-	GLuint ebo;
-	glGenBuffers(1, &ebo);
-
 	//create vertex buffer object and copy data to it
 	GLuint vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
-
-	GLuint elements[] = {
-	    0, 1, 2,
-	    2, 3, 0
-	};
 
 	float vertices[] = {
 		// X,    Y,    R,    G,    B
@@ -75,6 +67,22 @@ int main(int argc, char *argv[]) {
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	// create element buffer
+	GLuint ebo;
+	glGenBuffers(1, &ebo);
+
+	//create texture
+	GLuint tex;
+	glGenTextures(1, &tex);
+
+	//bind texture
+	glBindTexture(GL_TEXTURE_2D, tex);
+
+	GLuint elements[] = {
+	    0, 1, 2,
+	    2, 3, 0
+	};
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
@@ -109,8 +117,19 @@ int main(int argc, char *argv[]) {
 	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
 			(void*)(2*sizeof(float)));
 
-	//get colection for triangle colour
-	GLint uniColor = glGetUniformLocation(shaderProgram, "triangleColor");
+	//configure texture
+	float color[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	// Black/white checkerboard
+	float pixels[] = {
+	    0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+	};
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels);
 
 	// handle events
 	SDL_Event e;
@@ -120,12 +139,8 @@ int main(int argc, char *argv[]) {
 			if (e.type == SDL_QUIT)
 				break;
 		}
-		//set colour of triangle
-//		GLfloat time = (GLfloat)clock() / (GLfloat)CLOCKS_PER_SEC;
-//
-//        glUniform3f(uniColor, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
 		// clear screen to black
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.3f, 0.9f, 0.8f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// draw triangles
@@ -138,6 +153,7 @@ int main(int argc, char *argv[]) {
 	glDeleteShader(fragmentShader);
 	glDeleteShader(vertexShader);
 
+	glDeleteBuffers(1, &ebo);
 	glDeleteBuffers(1, &vertexBuffer);
 
 	glDeleteVertexArrays(1, &vao);

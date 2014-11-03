@@ -52,32 +52,33 @@ int main(int argc, char *argv[]) {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	//create vertex buffer object and copy data to it
-	GLuint vertexBuffer;
-	glGenBuffers(1, &vertexBuffer);
-
 	// create element buffer
 	GLuint ebo;
 	glGenBuffers(1, &ebo);
 
-	float vertices[] = {
-		// X,     Y,    Z,    R,    G,   B
-	    -0.5f,  0.5f, 0.5f, 1.0f, 0.0f, 0.0f, // Top-left
-	     0.5f,  0.5f, 0.5f, 0.0f, 1.0f, 0.0f, // Top-right
-	     0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	    -0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, // Bottom-left
-	};
+	//create vertex buffer object and copy data to it
+	GLuint vertexBuffer;
+	glGenBuffers(1, &vertexBuffer);
 
 	GLuint elements[] = {
 	    0, 1, 2,
 	    2, 3, 0
 	};
 
+	float vertices[] = {
+		// X,    Y,    R,    G,    B
+	    -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // Top-left
+	     0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // Top-right
+	     0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
+	    -0.5f, -0.5f, 1.0f, 1.0f, 1.0f  // Bottom-left
+	};
+
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+	    sizeof(elements), elements, GL_STATIC_DRAW);
 
 	// create and compile vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -100,13 +101,16 @@ int main(int argc, char *argv[]) {
 	// specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
 			0);
 
 	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
 	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
-			(void*)(3*sizeof(float)));
+	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
+			(void*)(2*sizeof(float)));
+
+	//get colection for triangle colour
+	GLint uniColor = glGetUniformLocation(shaderProgram, "triangleColor");
 
 	// handle events
 	SDL_Event e;
@@ -124,8 +128,7 @@ int main(int argc, char *argv[]) {
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// draw triangle from the 3 vertices
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
+		// draw triangles
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		SDL_GL_SwapWindow(window);

@@ -4,34 +4,42 @@
  *  Created on: 27 Oct 2014
  *      Author: George Vicarey
  */
-
+//link to glew statically
 #define GLEW_STATIC
+
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <SOIL.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <time.h>
 #include <string>
-//#include <SOIL.h>
 
-// shader  source inline
-const GLchar* vertexSource =
-    "#version 150 core\n"
-    "in vec2 position;"
-    "in vec3 color;"
-    "out vec3 Color;"
-    "void main() {"
-    "   Color = color;"
-    "   gl_Position = vec4(position, 0.0, 1.0);"
-    "}";
+// shader  sources inline
+const GLchar* vertexSource = "#version 150 core\n"
+		"in vec2 position;"
+		"in vec3 color;"
+		"in vec2 texcoord;"
+		"out vec3 Color;"
+		"out vec2 Texcoord;"
+		"void main() {"
+		"   Color = color;"
+		"   Texcoord = texcoord;"
+		"   gl_Position = vec4(position, 0.0, 1.0);"
+		"}";
 
 const GLchar* fragmentSource =
-    "#version 150 core\n"
-    "in vec3 Color;"
-    "out vec4 outColor;"
-    "void main() {"
-    "   outColor = vec4(Color, 1.0);"
-    "}";
+		"#version 150 core\n"
+				"in vec3 Color;"
+				"in vec2 Texcoord;"
+				"out vec4 outColor;"
+	    		"uniform sampler2D texKitten;"
+	    		"uniform sampler2D texPuppy;"
+				"void main() {"
+				"   outColor = mix(texture(texKitten, Texcoord), texture(texPuppy, Texcoord), 0.5);"
+				"}";
 
 int main(int argc, char *argv[]) {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -60,12 +68,12 @@ int main(int argc, char *argv[]) {
 	glGenBuffers(1, &vertexBuffer);
 
 	float vertices[] = {
-		// X,    Y,    R,    G,    B
-	    -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // Top-left
-	     0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // Top-right
-	     0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
-	    -0.5f, -0.5f, 1.0f, 1.0f, 1.0f  // Bottom-left
-	};
+	//  Position   Color             Texcoords
+			-0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, // Top-left
+			0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // Top-right
+			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, // Bottom-right
+			-0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom-left
+			};
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -74,21 +82,11 @@ int main(int argc, char *argv[]) {
 	GLuint ebo;
 	glGenBuffers(1, &ebo);
 
-	//create texture
-	GLuint tex;
-	glGenTextures(1, &tex);
-
-	//bind texture
-	glBindTexture(GL_TEXTURE_2D, tex);
-
-	GLuint elements[] = {
-	    0, 1, 2,
-	    2, 3, 0
-	};
+	GLuint elements[] = { 0, 1, 2, 2, 3, 0 };
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-	    sizeof(elements), elements, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements,
+	GL_STATIC_DRAW);
 
 	// create and compile vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -111,28 +109,52 @@ int main(int argc, char *argv[]) {
 	// specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float),
 			0);
 
 	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
 	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-			(void*)(2*sizeof(float)));
+	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float),
+			(void*) (2 * sizeof(float)));
 
-	//configure texture
-	float color[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
+	GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
+	glEnableVertexAttribArray(texAttrib);
+	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float),
+			(void*) (5 * sizeof(float)));
+
+	// Load texture
+	GLuint textures[2];
+	glGenTextures(2, textures);
+
+	int width, height;
+	unsigned char* image;
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textures[0]);
+	image = SOIL_load_image("src/textures/kitten.png", &width, &height, 0, SOIL_LOAD_RGB);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+	GL_UNSIGNED_BYTE, image);
+	SOIL_free_image_data(image);
+	glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glGenerateMipmap(GL_TEXTURE_2D);
 
-	// Black/white checkerboard
-	float pixels[] = {
-	    0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
-	    1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
-	};
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	image = SOIL_load_image("src/textures/puppy.png", &width, &height, 0,
+			SOIL_LOAD_RGB);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+	GL_UNSIGNED_BYTE, image);
+	SOIL_free_image_data(image);
+	glUniform1i(glGetUniformLocation(shaderProgram, "texPuppy"), 1);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	// handle events
 	SDL_Event e;
@@ -143,7 +165,7 @@ int main(int argc, char *argv[]) {
 				break;
 		}
 		// clear screen to black
-		glClearColor(0.3f, 0.9f, 0.8f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// draw triangles
@@ -151,6 +173,8 @@ int main(int argc, char *argv[]) {
 
 		SDL_GL_SwapWindow(window);
 	}
+
+	glDeleteTextures(2, textures);
 
 	glDeleteProgram(shaderProgram);
 	glDeleteShader(fragmentShader);

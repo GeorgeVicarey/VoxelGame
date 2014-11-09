@@ -5,12 +5,14 @@
  *      Author: George Vicarey
  */
 
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <SOIL.h>
 #include <time.h>
 #include <string>
+//#include <SOIL.h>
 
 // shader  source inline
 const GLchar* vertexSource =
@@ -129,6 +131,7 @@ int main(int argc, char *argv[]) {
 	    0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
 	    1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
 	};
+
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels);
 
 	// handle events

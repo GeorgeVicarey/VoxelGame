@@ -14,6 +14,8 @@ The aim of this project is to create a simple Minecraft-Esque game.
 ###Pre-Requisites
 
 - SDL2
+- GLEW
+- SOIL
 - OpenGL
 
 &copy; 2014 - George Vicarey

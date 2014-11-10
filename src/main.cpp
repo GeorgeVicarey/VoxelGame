@@ -11,38 +11,16 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <SOIL.h>
+
+#include "shader.h"
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <time.h>
 #include <string>
 
-// shader  sources inline
-const GLchar* vertexSource =
-	    "#version 150 core\n"
-	    "in vec3 position;"
-	    "in vec3 color;"
-	    "in vec2 texcoord;"
-	    "out vec3 Color;"
-	    "out vec2 Texcoord;"
-	    "uniform mat4 model;"
-	    "uniform mat4 view;"
-	    "uniform mat4 proj;"
-	    "void main() {"
-	    "   Color = color;"
-	    "   Texcoord = texcoord;"
-	    "   gl_Position = proj * view * model * vec4(position, 1.0);"
-	    "}";
-
-const GLchar* fragmentSource = "#version 150 core\n"
-	    "in vec3 Color;"
-	    "in vec2 Texcoord;"
-	    "out vec4 outColor;"
-	    "uniform sampler2D texKitten;"
-	    "uniform sampler2D texPuppy;"
-	    "void main() {"
-	    "   outColor = vec4(Color, 1.0) * mix(texture(texKitten, Texcoord), texture(texPuppy, Texcoord), 0.5);"
-	    "}";
+Shader shader;
 
 int main(int argc, char *argv[]) {
 	SDL_Init(SDL_INIT_VIDEO);
@@ -57,6 +35,9 @@ int main(int argc, char *argv[]) {
 			SDL_WINDOW_OPENGL);
 
 	SDL_GLContext context = SDL_GL_CreateContext(window);
+
+	char* vertexSource = shader.file_read("shaders/vertex.vs");
+	char* fragmentSource = shader.file_read("shaders/fragment.fs");
 
 	// initialise GLEW
 	glewExperimental = GL_TRUE;
@@ -169,23 +150,23 @@ int main(int argc, char *argv[]) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements,
 	GL_STATIC_DRAW);
 
-	// create and compile vertex shader
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexSource, NULL);
-	glCompileShader(vertexShader);
+	// Create and compile the vertex shader
+	    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	    glShaderSource(vertexShader, 1, &vertexSource, NULL);
+	    glCompileShader(vertexShader);
 
-	// create and compile fragment shader
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-	glCompileShader(fragmentShader);
+	    // Create and compile the fragment shader
+	    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	    glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+	    glCompileShader(fragmentShader);
 
-	// link the vertex and fragment shader into a shader program
-	GLuint shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glBindFragDataLocation(shaderProgram, 0, "outColor");
-	glLinkProgram(shaderProgram);
-	glUseProgram(shaderProgram);
+	    // Link the vertex and fragment shader into a shader program
+	    GLuint shaderProgram = glCreateProgram();
+	    glAttachShader(shaderProgram, vertexShader);
+	    glAttachShader(shaderProgram, fragmentShader);
+	    glBindFragDataLocation(shaderProgram, 0, "outColor");
+	    glLinkProgram(shaderProgram);
+	    glUseProgram(shaderProgram);
 
 	// specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
@@ -250,8 +231,6 @@ int main(int argc, char *argv[]) {
 	GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
 	glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 
-	GLint uniColor = glGetUniformLocation(shaderProgram, "overrideColor");
-
 	// handle events
 	SDL_Event e;
 
@@ -266,14 +245,15 @@ int main(int argc, char *argv[]) {
 
 		//calculate rotation
 		glm::mat4 model;
-		model = glm::rotate(model,
+		model = glm::rotate(
+				model,
 				(float) clock() / (float) CLOCKS_PER_SEC * 45.0f,
-				glm::vec3(0.0f, 0.0f, 1.0f));
+				glm::vec3(0.0f, 0.0f, 1.0f)
+		);
 		glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
 
 		// draw triangles
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-//		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		SDL_GL_SwapWindow(window);
 	}
@@ -281,8 +261,6 @@ int main(int argc, char *argv[]) {
 	glDeleteTextures(2, textures);
 
 	glDeleteProgram(shaderProgram);
-	glDeleteShader(fragmentShader);
-	glDeleteShader(vertexShader);
 
 	glDeleteBuffers(1, &ebo);
 	glDeleteBuffers(1, &vertexBuffer);

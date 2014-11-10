@@ -231,6 +231,12 @@ int main(int argc, char *argv[]) {
 	GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
 	glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 
+	float x, y, z;
+
+	x = 2.5f;
+	y = 2.5f;
+	y = 2.0f;
+
 	// handle events
 	SDL_Event e;
 
@@ -238,16 +244,33 @@ int main(int argc, char *argv[]) {
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT)
 				break;
+			if (e.type == SDL_KEYDOWN){
+				switch(e.key.keysym.sym) {
+					case SDLK_UP:
+						z = z + 0.5;
+						break;
+
+					case SDLK_DOWN:
+						z = z - 0.5;
+				}
+			}
 		}
 		// clear screen to black
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		glm::mat4 view = glm::lookAt(
+				glm::vec3(x, y, z),
+				glm::vec3(0.0f, 0.0f, 0.0f),
+				glm::vec3(0.0f, 0.0f, 1.0f));
+		GLint uniView = glGetUniformLocation(shaderProgram, "view");
+		glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
+
 		//calculate rotation
 		glm::mat4 model;
 		model = glm::rotate(
 				model,
-				(float) clock() / (float) CLOCKS_PER_SEC * 45.0f,
+				(float) clock() / (float) CLOCKS_PER_SEC * 1.0f,
 				glm::vec3(0.0f, 0.0f, 1.0f)
 		);
 		glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));

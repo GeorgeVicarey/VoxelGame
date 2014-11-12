@@ -6,6 +6,7 @@
  * Author: George Vicarey
  *
  */
+
 #include "game.h"
 #include <iostream>
 
@@ -58,6 +59,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		// swap buffers
+		game->swapBuffers();
 	}
 
 	return 0;

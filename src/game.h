@@ -9,9 +9,7 @@
 #define GAME_H_
 
 #define GLEW_STATIC
-#include <GL/glew.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
+#include "global.h"
 
 /*
  * Create an SDL window with an OpenGL context in it.
@@ -19,11 +17,13 @@
 class Game {
 public:
 	Game();
+	~Game();
 	bool createWindow(const char*, int, int);
 	bool createContext();
 	bool handleEvents(SDL_Event);
 	bool update();
 	bool render();
+	void swapBuffers();
 
 private:
 	SDL_Window* window;

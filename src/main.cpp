@@ -7,17 +7,58 @@
  *
  */
 #include "game.h"
+#include <iostream>
 
+// create an instance of game
 Game* game = new Game();
 
+int width = 800;
+int height = 600;
+const char* title = "OpenGL Test";
+
 int main(int argc, char *argv[]) {
-	// initialise everything
-	game->Init();
+	// create game
+	if  (game->createWindow(title, width, height)) {
+		// window created
+		std::cout << "window" << std::endl;
+	}
 
-	// start Game Loop
-	game->Loop();
+	// create openGL context
+	if (game->createContext()) {
+		// context created
+		std::cout << "context" << std::endl;
+	}
 
-	// cleanup everything
-	game->CleanUp();
+	// event listener
+	SDL_Event e;
+
+	// game loop
+	while (true) {
+		if (SDL_PollEvent(&e)) {
+			// if windows closed break from game loop
+			if (e.type == SDL_QUIT)	break;
+		}
+
+		// handle events i.e. user input
+		if (game->handleEvents(e)) {
+			// events handled
+			std::cout << "events" << std::endl;
+		}
+
+		// update scene
+		if (game->update()) {
+			// update successful
+			std::cout << "update" << std::endl;
+		}
+
+		// render scene to screen
+		if (game->render()) {
+			// update successful
+			std::cout << "render" << std::endl;
+		}
+
+		// swap buffers
+	}
+
 	return 0;
 }

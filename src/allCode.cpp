@@ -21,9 +21,7 @@
 //#include <time.h>
 //#include <string>
 //
-//Shader shader;
-//
-//int main1(int argc, char *argv[]) {
+//int main(int argc, char *argv[]) {
 //	SDL_Init(SDL_INIT_VIDEO);
 //
 //	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
@@ -36,9 +34,6 @@
 //			SDL_WINDOW_OPENGL);
 //
 //	SDL_GLContext context = SDL_GL_CreateContext(window);
-//
-//	const GLchar* vertexSource = shader.file_read("shaders/vertex.vs");
-//	const GLchar* fragmentSource = shader.file_read("shaders/fragment.fs");
 //
 //	// initialise GLEW
 //	glewExperimental = GL_TRUE;
@@ -110,14 +105,8 @@
 //	GL_STATIC_DRAW);
 //
 //	// Create and compile the vertex shader
-//	    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-//	    glShaderSource(vertexShader, 1, &vertexSource, NULL);
-//	    glCompileShader(vertexShader);
-//
-//	    // Create and compile the fragment shader
-//	    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-//	    glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-//	    glCompileShader(fragmentShader);
+//    Shader vertexShader = new Shader("shaders/vertex.vs", GL_VERTEX_SHADER);
+//    Shader fragmentShader = new Shader("shaders/fragment.fs", GL_FRAGMENT_SHADER);
 //
 //	    // Link the vertex and fragment shader into a shader program
 //	    GLuint shaderProgram = glCreateProgram();

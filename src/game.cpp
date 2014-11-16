@@ -7,8 +7,10 @@
 
 #include "game.h"
 #include "cube.h"
+#include <iostream>
 
-Cube* cube;
+Cube cube;
+Cube cube2;
 
 Game::Game() {
 	window = NULL;
@@ -16,13 +18,40 @@ Game::Game() {
 }
 
 Game::~Game() {
+	SDL_GL_DeleteContext(context);
+	SDL_Quit();
+}
+
+bool Game::init() {
+	SDL_Init(SDL_INIT_VIDEO);
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+			SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+	return true;
+}
+
+bool Game::objectInit() {
+
+	glewExperimental = GL_TRUE;
+	glewInit();
+
+	cube.set(0, 0);
+	cube.createCube();
+
+	return true;
 }
 
 bool Game::createWindow(const char* title, int width, int height) {
 	// create SDL window
-	window = SDL_CreateWindow(title, 100, 100, width, height, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(title, 100, 100, width, height,
+			SDL_WINDOW_OPENGL);
 
-	if (window == NULL) return false;
+	if (window == NULL)
+		return false;
 
 	return true;
 }
@@ -31,7 +60,8 @@ bool Game::createContext() {
 	// create opengl context and assign it to window
 	context = SDL_GL_CreateContext(window);
 
-	if (context == NULL) return false;
+	if (context == NULL)
+		return false;
 
 	return true;
 }
@@ -42,15 +72,17 @@ bool Game::handleEvents(SDL_Event e) {
 }
 
 bool Game::update() {
-	cube = new Cube(0.0f, 0.0f, 0.0f);
 
 	return true;
 }
 
 bool Game::render() {
-	cube->draw();
+	// Clear the screen to black
+	glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	cube.draw();
+
 	return true;
 }
 

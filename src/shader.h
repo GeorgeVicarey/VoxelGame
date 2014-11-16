@@ -12,7 +12,7 @@ using namespace std;
 class Shader
 {
 public:
-	char* file_read(const char* filename);
+	const GLchar* fileRead(std::string);
 };
 
 #endif

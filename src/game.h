@@ -18,6 +18,8 @@ class Game {
 public:
 	Game();
 	~Game();
+	bool init();
+	bool objectInit();
 	bool createWindow(const char*, int, int);
 	bool createContext();
 	bool handleEvents(SDL_Event);

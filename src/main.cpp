@@ -10,14 +10,20 @@
 #include "game.h"
 #include <iostream>
 
-// create an instance of game
-Game* game = new Game();
-
 int width = 800;
 int height = 600;
 const char* title = "OpenGL Test";
 
 int main(int argc, char *argv[]) {
+	// create an instance of game
+	Game* game = new Game();
+
+	//initialise SDL
+	if (game->init()) {
+		// initialised
+		std::cout << "init" << std::endl;
+	}
+
 	// create game
 	if  (game->createWindow(title, width, height)) {
 		// window created
@@ -28,6 +34,10 @@ int main(int argc, char *argv[]) {
 	if (game->createContext()) {
 		// context created
 		std::cout << "context" << std::endl;
+	}
+
+	if (game->objectInit()) {
+		std::cout << "objects" << std::endl;
 	}
 
 	// event listener

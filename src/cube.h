@@ -12,7 +12,11 @@
 
 class Cube {
 public:
-	Cube(float, float, float);
+	Cube();
+	~Cube();
+	void set(GLfloat X, GLfloat Y);
+	void createProgram();
+	void createCube();
 	void draw();
 };
 

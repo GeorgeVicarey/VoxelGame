@@ -42,7 +42,6 @@ void Cube::createCube() {
 	if (vertexSource != NULL)
 		std::cout << "vertexSource" << std::endl;
 
-
 	// load fragment shader source
 	const GLchar* fragmentSource = shader->fileRead("src/shaders/fragment.fs");
 	if (fragmentSource != NULL)
@@ -57,11 +56,11 @@ void Cube::createCube() {
 
 	GLfloat vertices[] = {
 	//  Position      Color             Texcoords
-		x-0.5f, y+0.5f, 1.0f, 0.0f, 0.0f, // Top-left
-		x+0.5f, y+0.5f, 0.0f, 1.0f, 0.0f, // Top-right
-		x+0.5f, y-0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
-		x-0.5f, y-0.5f, 1.0f, 1.0f, 1.0f, // Bottom-left
-	};
+			x - 0.5f, y + 0.5f, 1.0f, 0.0f, 0.0f, // Top-left
+			x + 0.5f, y + 0.5f, 0.0f, 1.0f, 0.0f, // Top-right
+			x + 0.5f, y - 0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
+			x - 0.5f, y - 0.5f, 1.0f, 1.0f, 1.0f, // Bottom-left
+			};
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -103,8 +102,36 @@ void Cube::createCube() {
 	glEnableVertexAttribArray(colAttrib);
 	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat),
 			(void*) (2 * sizeof(GLfloat)));
+
+
+}
+
+void Cube::update() {
+	// Calculate transformation
+	glm::mat4 trans;
+	trans = glm::rotate(
+	    trans,
+	    (float)clock() / (float)CLOCKS_PER_SEC * 1.0f,
+	    glm::vec3(0.0f, 0.0f, 1.0f)
+	);
+	GLint uniTrans = glGetUniformLocation(shaderProgram, "model");
+	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
+	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
+
+	glm::mat4 view = glm::lookAt(
+	    glm::vec3(1.2f, 1.2f, 1.2f),
+	    glm::vec3(0.0f, 0.0f, 0.0f),
+	    glm::vec3(0.0f, 0.0f, 1.0f)
+	);
+	GLint uniView = glGetUniformLocation(shaderProgram, "view");
+	glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
+
+	glm::mat4 proj = glm::perspective(45.0f, 800.0f / 600.0f, 1.0f, 10.0f);
+	GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
+	glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 }
 
 void Cube::draw() {
+
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

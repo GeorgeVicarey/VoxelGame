@@ -17,6 +17,7 @@ public:
 	void set(GLfloat X, GLfloat Y);
 	void createProgram();
 	void createCube();
+	void update();
 	void draw();
 };
 

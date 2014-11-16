@@ -72,6 +72,7 @@ bool Game::handleEvents(SDL_Event e) {
 }
 
 bool Game::update() {
+	cube.update();
 
 	return true;
 }

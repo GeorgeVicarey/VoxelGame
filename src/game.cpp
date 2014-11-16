@@ -79,7 +79,7 @@ bool Game::update() {
 
 bool Game::render() {
 	// Clear the screen to black
-	glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	cube.draw();

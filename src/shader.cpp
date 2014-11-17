@@ -15,21 +15,20 @@
 const GLchar* Shader::fileRead(std::string filename) {
 
 	//Open file
-		GLuint shaderID = 0;
-		std::string shaderString;
-		std::ifstream sourceFile( filename.c_str() );
+	std::string shaderString;
+	std::ifstream sourceFile(filename.c_str());
 
-		//Source file loaded
-		if( sourceFile )
-		{
-		    //Get shader source
-			shaderString.assign( ( std::istreambuf_iterator< char >( sourceFile ) ), std::istreambuf_iterator< char >() );
+	//Source file loaded
+	if (sourceFile) {
+		//Get shader source
+		shaderString.assign((std::istreambuf_iterator<char>(sourceFile)),
+				std::istreambuf_iterator<char>());
 
-	        //Set shader source
-	        const GLchar* shaderSource = shaderString.c_str();
+		//Set shader source
+		const GLchar* shaderSource = shaderString.c_str();
 
-	    	return shaderSource;
-		}
+		return shaderSource;
+	}
 
 	return NULL;
 }

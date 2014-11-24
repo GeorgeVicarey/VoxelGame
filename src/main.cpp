@@ -21,23 +21,23 @@ int main(int argc, char *argv[]) {
 	//initialise SDL
 	if (game->init()) {
 		// initialised
-		//std::cout << "init" << std::endl;
+		std::cout << "init" << std::endl;
 	}
 
 	// create game
 	if  (game->createWindow(title, width, height)) {
 		// window created
-		//std::cout << "window" << std::endl;
+		std::cout << "window" << std::endl;
 	}
 
 	// create openGL context
 	if (game->createContext()) {
 		// context created
-		//std::cout << "context" << std::endl;
+		std::cout << "context" << std::endl;
 	}
 
 	if (game->objectInit()) {
-		//std::cout << "objects" << std::endl;
+		std::cout << "objects" << std::endl;
 	}
 
 	// event listener
@@ -50,23 +50,22 @@ int main(int argc, char *argv[]) {
 			if (e.type == SDL_QUIT)	break;
 		}
 
-		/*
 		// handle events i.e. user input
 		if (game->handleEvents(e)) {
 			// events handled
-			//std::cout << "events" << std::endl;
+			std::cout << "events" << std::endl;
 		}
 
 		// update scene
 		if (game->update()) {
 			// update successful
-			//std::cout << "update" << std::endl;
-		}*/
+			std::cout << "update" << std::endl;
+		}
 
 		// render scene to screen
 		if (game->render()) {
 			// update successful
-			//std::cout << "render" << std::endl;
+			std::cout << "render" << std::endl;
 		}
 
 		// swap buffers

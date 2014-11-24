@@ -23,9 +23,11 @@ const GLchar* Shader::fileRead(std::string filename) {
 		//Get shader source
 		shaderString.assign((std::istreambuf_iterator<char>(sourceFile)),
 				std::istreambuf_iterator<char>());
+		shaderString.append("\0");
 
 		//Set shader source
 		const GLchar* shaderSource = shaderString.c_str();
+//		shaderSource[length+1]='\0';  // Ensure null terminated
 
 		return shaderSource;
 	}

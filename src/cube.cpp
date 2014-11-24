@@ -110,11 +110,16 @@ void Cube::createCube() {
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	glCompileShader(vertexShader);
+	GLint status;
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
+	if(status != GL_TRUE) std::cout << "FRAGMENT COMPILE ERROR" << std::endl;
 
 	// Create and compile the fragment shader
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
 	glCompileShader(fragmentShader);
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &status);
+	if(status != GL_TRUE) std::cout << "VERTEX COMPILE ERROR" << std::endl;
 
 	// Link the vertex and fragment shader into a shader program
 	shaderProgram = glCreateProgram();

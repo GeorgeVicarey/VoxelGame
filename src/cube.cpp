@@ -113,6 +113,9 @@ void Cube::createCube() {
 	GLint status;
 	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
 	if(status != GL_TRUE) std::cout << "FRAGMENT COMPILE ERROR" << std::endl;
+	char buffer[512];
+	glGetShaderInfoLog(vertexShader, 512, NULL, buffer);
+	std::cout << (std::string)buffer << std::endl;
 
 	// Create and compile the fragment shader
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -120,6 +123,8 @@ void Cube::createCube() {
 	glCompileShader(fragmentShader);
 	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &status);
 	if(status != GL_TRUE) std::cout << "VERTEX COMPILE ERROR" << std::endl;
+	glGetShaderInfoLog(fragmentShader, 512, NULL, buffer);
+	std::cout << buffer << std::endl;
 
 	// Link the vertex and fragment shader into a shader program
 	shaderProgram = glCreateProgram();

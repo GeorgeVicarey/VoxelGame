@@ -39,6 +39,8 @@ bool Game::objectInit() {
 	glewExperimental = GL_TRUE;
 	glewInit();
 
+	glEnable(GL_DEPTH_TEST);
+
 	cube.set(0, 0);
 	cube.createCube();
 
@@ -79,8 +81,8 @@ bool Game::update() {
 
 bool Game::render() {
 	// Clear the screen to black
-	glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.2f, 0.4f, 0.6f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	cube.draw();
 

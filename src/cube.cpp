@@ -15,14 +15,45 @@ GLuint shaderProgram, fragmentShader, vertexShader;
 
 GLuint vao, vbo, ebo;
 
-GLfloat x, y;
+GLfloat x, y, z;
+GLfloat r, g, b;
+
 
 Cube::Cube() {
 }
 
-void Cube::set(GLfloat X, GLfloat Y) {
+void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
 	x = X;
 	y = Y;
+	z = Z;
+}
+
+void Cube::setType(Type type) {
+switch (type) {
+	case Type::Red:
+		r = 1.0f;
+		g = 0.0f;
+		b = 0.0f;
+		break;
+
+	case Type::Green:
+		r = 0.0f;
+		g = 1.0f;
+		b = 0.0f;
+		break;
+
+	case Type::Blue:
+		r = 0.0f;
+		g = 1.0f;
+		b = 0.0f;
+		break;
+
+	default:
+		r = 0.0f;
+		g = 0.0f;
+		b = 0.0f;
+		break;
+	}
 }
 
 Cube::~Cube() {
@@ -56,15 +87,15 @@ void Cube::createCube() {
 
 	float vertices[] = {
 		//X,    Y,     Z,    R,    G,    B
-		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,		// 0 == 16 == 10
-		 0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,		// 1 == 14 == 17
-		 0.5f,  0.5f, -0.5f, 0.0f, 1.0f, 0.0f,		// 2 == 13 == 21
-		-0.5f,  0.5f, -0.5f, 0.0f, 1.0f, 1.0f,		// 3 == 9 == 20
+		x-0.5f, y-0.5f, z-0.5f, r, g, b,		// 0 == 16 == 10
+		x+0.5f, y-0.5f, z-0.5f, r, g, b,		// 1 == 14 == 17
+		x+0.5f, y+0.5f, z-0.5f, r, g, b,		// 2 == 13 == 21
+		x-0.5f, y+0.5f, z-0.5f, r, g, b,		// 3 == 9 == 20
 
-		-0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f,		// 4 == 11 == 19
-		 0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 1.0f,		// 5 == 15 == 18
-		 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 0.0f, 		// 6 == 22 ==12
-		-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f,		// 7 == 8 == 23
+		x-0.5f, y-0.5f, z+0.5f, r, g, b,		// 4 == 11 == 19
+		x+0.5f, y-0.5f, z+0.5f, r, g, b,		// 5 == 15 == 18
+		x+0.5f, y+0.5f, z+0.5f, r, g, b, 		// 6 == 22 ==12
+		x-0.5f, y+0.5f, z+0.5f, r, g, b,		// 7 == 8 == 23
 	};
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

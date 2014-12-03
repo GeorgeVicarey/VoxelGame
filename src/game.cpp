@@ -41,7 +41,8 @@ bool Game::objectInit() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	cube.set(0, 0);
+	cube.setPos(0, 0, 0);
+	cube.setType(Cube::Type::Green);
 	cube.createCube();
 
 	return true;

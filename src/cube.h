@@ -12,9 +12,12 @@
 
 class Cube {
 public:
+	enum Type { Red, Green, Blue};
+
 	Cube();
 	~Cube();
-	void set(GLfloat X, GLfloat Y);
+	void setPos(GLfloat X, GLfloat Y, GLfloat Z);
+	void setType(Type);
 	void createProgram();
 	void createCube();
 	void update();

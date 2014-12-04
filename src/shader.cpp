@@ -14,23 +14,23 @@
 
 const GLchar* Shader::fileRead(std::string filename) {
 
-	//Open file
-	std::string * shaderString = new string();
-	std::ifstream sourceFile(filename.c_str());
+    //Open file
+    std::string * shaderString = new string();
+    std::ifstream sourceFile(filename.c_str());
 
-	//Source file loaded
-	if (sourceFile) {
-		//Get shader source
-		shaderString->assign((std::istreambuf_iterator<char>(sourceFile)),
-				std::istreambuf_iterator<char>());
+    //Source file loaded
+    if (sourceFile) {
+        //Get shader source
+        shaderString->assign((std::istreambuf_iterator<char>(sourceFile)),
+                std::istreambuf_iterator<char>());
 
-		shaderString->insert(0, "#version 150 core\n");
+        shaderString->insert(0, "#version 150 core\n");
 
-		// NULL TERMINATE THE FUCKING STRING!!!
-		shaderString->append("\0");
+        // NULL TERMINATE THE FUCKING STRING!!!
+        shaderString->append("\0");
 
-		return shaderString->c_str();;
-	}
+        return shaderString->c_str();;
+    }
 
-	return NULL;
+    return NULL;
 }

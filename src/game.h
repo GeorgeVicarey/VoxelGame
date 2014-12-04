@@ -15,23 +15,21 @@
  * Create an SDL window with an OpenGL context in it.
  */
 class Game {
-public:
-	Game();
-	~Game();
-	bool init();
-	bool objectInit();
-	bool createWindow(const char*, int, int);
-	bool createContext();
-	bool handleEvents(SDL_Event);
-	bool update();
-	bool render();
-	void swapBuffers();
+    public:
+        Game();
+        ~Game();
+        bool init();
+        bool objectInit();
+        bool createWindow(const char*, int, int);
+        bool createContext();
+        bool handleEvents(SDL_Event);
+        bool update();
+        bool render();
+        void swapBuffers();
 
-private:
-	SDL_Window* window;
-	SDL_GLContext context;
+    private:
+        SDL_Window* window;
+        SDL_GLContext context;
 };
-
-
 
 #endif /* GAME_H_ */

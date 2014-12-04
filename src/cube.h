@@ -11,17 +11,19 @@
 #include "global.h"
 
 class Cube {
-public:
-	enum Type { Red, Green, Blue};
+    public:
+        enum Type {
+            Red, Green, Blue
+        };
 
-	Cube();
-	~Cube();
-	void setPos(GLfloat X, GLfloat Y, GLfloat Z);
-	void setType(Type);
-	void createProgram();
-	void createCube();
-	void update();
-	void draw();
+        Cube();
+        ~Cube();
+        void setPos(GLfloat X, GLfloat Y, GLfloat Z);
+        void setType(Type);
+        void createProgram();
+        void createCube();
+        void update();
+        void draw();
 };
 
 #endif /* SRC_CUBE_H_ */

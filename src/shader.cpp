@@ -5,12 +5,9 @@
  *      Author: George
  */
 
-#include "shader.h"
 #include <stdlib.h>
 #include <iostream>
-
-#define GLEW_STATIC
-#include <GL/glew.h>
+#include "shader.h"
 
 const GLchar* Shader::fileRead(std::string filename) {
 
@@ -34,3 +31,24 @@ const GLchar* Shader::fileRead(std::string filename) {
 
     return NULL;
 }
+
+GLuint Shader::compileShader(const GLchar* source, GLenum shaderType) {
+    GLuint shader = glCreateShader(shaderType);
+    glShaderSource(shader, 1, &source, NULL);
+    glCompileShader(shader);
+
+    return shader;
+}
+
+GLuint Shader::compileProgram(GLuint vertex, GLuint fragment) {
+    GLuint program = glCreateProgram();
+    glAttachShader(program, vertex);
+    glAttachShader(program, fragment);
+
+    return program;
+}
+
+
+//shaderProgram = glCreateProgram();
+//glAttachShader(shaderProgram, vertexShader);
+//glAttachShader(shaderProgram, fragmentShader);

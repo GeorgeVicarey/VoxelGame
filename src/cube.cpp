@@ -62,8 +62,6 @@ Cube::~Cube() {
 
     glDeleteBuffers(1, &ebo);
     glDeleteBuffers(1, &vbo);
-
-    glDeleteVertexArrays(1, &vao);
 }
 
 void Cube::createCube() {
@@ -75,27 +73,27 @@ void Cube::createCube() {
     const GLchar* fragmentSource = shader->fileRead("src/shaders/fragment.fs");
     if (fragmentSource != NULL) std::cout << "fragmentSource" << std::endl;
 
-    // Create Vertex Array Object
+    float vertices[] = {
+            //X,    Y,     Z,    R,    G,    B
+            x - 0.5f, y - 0.5f, z - 0.5f, r, g, b,      // 0
+            x + 0.5f, y - 0.5f, z - 0.5f, r, g, b,      // 1
+            x + 0.5f, y + 0.5f, z - 0.5f, r, g, b,      // 2
+            x - 0.5f, y + 0.5f, z - 0.5f, r, g, b,      // 3
+
+            x - 0.5f, y - 0.5f, z + 0.5f, r, g, b,      // 4
+            x + 0.5f, y - 0.5f, z + 0.5f, r, g, b,      // 5
+            x + 0.5f, y + 0.5f, z + 0.5f, r, g, b,      // 6
+            x - 0.5f, y + 0.5f, z + 0.5f, r, g, b,      // 7
+     };
+
+    //create vertex array object and bind it
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
     // Create a Vertex Buffer Object and copy the vertex data to it
     glGenBuffers(1, &vbo);
-
-    float vertices[] = {
-            //X,    Y,     Z,    R,    G,    B
-            x - 0.5f, y - 0.5f, z - 0.5f, r, g, b,		// 0 == 16 == 10
-            x + 0.5f, y - 0.5f, z - 0.5f, r, g, b,		// 1 == 14 == 17
-            x + 0.5f, y + 0.5f, z - 0.5f, r, g, b,		// 2 == 13 == 21
-            x - 0.5f, y + 0.5f, z - 0.5f, r, g, b,		// 3 == 9 == 20
-
-            x - 0.5f, y - 0.5f, z + 0.5f, r, g, b,		// 4 == 11 == 19
-            x + 0.5f, y - 0.5f, z + 0.5f, r, g, b,		// 5 == 15 == 18
-            x + 0.5f, y + 0.5f, z + 0.5f, r, g, b, 		// 6 == 22 ==12
-            x - 0.5f, y + 0.5f, z + 0.5f, r, g, b,		// 7 == 8 == 23
-            };
-
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // Create an element array
@@ -115,29 +113,14 @@ void Cube::createCube() {
     GL_STATIC_DRAW);
 
     // Create and compile the vertex shader
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexSource, NULL);
-    glCompileShader(vertexShader);
-    GLint status;
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
-    if (status != GL_TRUE) std::cout << "FRAGMENT COMPILE ERROR" << std::endl;
-    char buffer[512];
-    glGetShaderInfoLog(vertexShader, 512, NULL, buffer);
-    std::cout << (std::string) buffer << std::endl;
+    vertexShader = shader->compileShader(vertexSource, GL_VERTEX_SHADER);
 
     // Create and compile the fragment shader
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-    glCompileShader(fragmentShader);
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &status);
-    if (status != GL_TRUE) std::cout << "VERTEX COMPILE ERROR" << std::endl;
-    glGetShaderInfoLog(fragmentShader, 512, NULL, buffer);
-    std::cout << buffer << std::endl;
+    fragmentShader =  shader->compileShader(fragmentSource, GL_FRAGMENT_SHADER);
 
     // Link the vertex and fragment shader into a shader program
-    shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
+    shaderProgram = shader->compileProgram(vertexShader, fragmentShader);
+
     glBindFragDataLocation(shaderProgram, 0, "outColor");
     glLinkProgram(shaderProgram);
     glUseProgram(shaderProgram);
@@ -152,6 +135,8 @@ void Cube::createCube() {
     glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),
             (void*) (3 * sizeof(GLfloat)));
 
+
+    glBindVertexArray(0);
 }
 
 void Cube::update() {
@@ -175,5 +160,6 @@ void Cube::update() {
 }
 
 void Cube::draw() {
+    glBindVertexArray(vao);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }

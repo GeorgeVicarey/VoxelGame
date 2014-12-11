@@ -7,11 +7,13 @@
 #include <iostream>
 using namespace std;
 
-#include <GL/glew.h>
+#include "global.h"
 
 class Shader {
     public:
         const GLchar* fileRead(std::string);
+        GLuint compileShader(const GLchar* source, GLenum type);
+        GLuint compileProgram(GLuint vertex, GLuint fragment);
 };
 
 #endif

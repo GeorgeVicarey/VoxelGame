@@ -24,6 +24,8 @@ class Cube {
         void createCube();
         void update();
         void draw();
+    private:
+        void createShader();
 };
 
 #endif /* SRC_CUBE_H_ */

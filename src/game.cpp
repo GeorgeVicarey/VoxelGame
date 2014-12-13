@@ -9,8 +9,10 @@
 #include "cube.h"
 #include <iostream>
 
-Cube cube;
-Cube cube1;
+GLuint vao;
+
+Cube * cube = new Cube();
+Cube * cube1 = new Cube();
 
 Game::Game() {
     window = NULL;
@@ -40,13 +42,13 @@ bool Game::objectInit() {
 
     glEnable(GL_DEPTH_TEST);
 
-    cube.setPos(0, 0, 0);
-    cube.setType(Cube::Type::Green);
-    cube.createCube();
+    cube->setPos(0, 0, 0);
+    cube->setType(Cube::Type::Green);
+    cube->createCube();
 
-    cube1.setPos(1, 0, 0);
-    cube1.setType(Cube::Type::Red);
-    cube1.createCube();
+    cube1->setPos(1, 0, 0);
+    cube1->setType(Cube::Type::Red);
+    cube1->createCube();
 
     return true;
 }
@@ -75,7 +77,8 @@ bool Game::handleEvents(SDL_Event e) {
 }
 
 bool Game::update() {
-    cube.update();
+    cube->update();
+    cube1->update();
 
     return true;
 }
@@ -85,8 +88,8 @@ bool Game::render() {
     glClearColor(0.2f, 0.4f, 0.6f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    cube.draw();
-    cube1.draw();
+    cube->draw();
+    cube1->draw();
 
     return true;
 }

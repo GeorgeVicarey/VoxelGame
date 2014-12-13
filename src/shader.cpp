@@ -23,7 +23,7 @@ const GLchar* Shader::fileRead(std::string filename) {
 
         shaderString->insert(0, "#version 150 core\n");
 
-        // NULL TERMINATE THE FUCKING STRING!!!
+        // null terminate the shader source
         shaderString->append("\0");
 
         return shaderString->c_str();;

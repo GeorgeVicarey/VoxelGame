@@ -26,6 +26,13 @@ class Cube {
         void draw();
     private:
         void createShader();
+        Shader* shader;
+        GLuint shaderProgram, fragmentShader, vertexShader;
+        GLuint vao, vbo, ebo;
+        GLfloat x, y, z;
+        GLfloat r, g, b;
+        GLint uniTrans;
+        glm::mat4 trans;
 };
 
 #endif /* SRC_CUBE_H_ */

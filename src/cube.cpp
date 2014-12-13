@@ -7,17 +7,6 @@
 
 #include "cube.h"
 
-Shader* shader;
-
-GLuint tex;
-
-GLuint shaderProgram, fragmentShader, vertexShader;
-
-GLuint vbo, ebo;
-
-GLfloat x, y, z;
-GLfloat r, g, b;
-
 Cube::Cube() {
 }
 
@@ -99,6 +88,9 @@ void Cube::createCube() {
     // Create an element array
     glGenBuffers(1, &ebo);
 
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements,
     GL_STATIC_DRAW);
@@ -119,14 +111,14 @@ void Cube::createCube() {
 }
 
 void Cube::update() {
-    // Calculate transformation
-    glm::mat4 trans;
-    trans = glm::rotate(trans, (float) clock() / (float) CLOCKS_PER_SEC * 1.0f,
-            glm::vec3(0.0f, 0.0f, 1.0f));
+    glUseProgram(shaderProgram);
 
-    GLint uniTrans = glGetUniformLocation(shaderProgram, "model");
-    glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
-    glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
+    // Calculate transformation
+//    trans = glm::rotate(trans, (float) clock() / (float) CLOCKS_PER_SEC * 0.01f,
+//            glm::vec3(0.0f, 0.0f, 1.0f));
+
+    uniTrans = glGetUniformLocation(shaderProgram, "model");
+//    glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
 
     glm::mat4 view = glm::lookAt(glm::vec3(1.2f, 1.2f, 1.2f), glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.0f, 0.0f, 1.0f));
@@ -139,6 +131,9 @@ void Cube::update() {
 }
 
 void Cube::draw() {
+    glUseProgram(shaderProgram);
+    glBindVertexArray(vao);
+    glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
 
@@ -146,11 +141,11 @@ void Cube::draw() {
 void Cube::createShader() {
     // load vertex shader source
     const GLchar* vertexSource = shader->fileRead("src/shaders/vertex.vs");
-    if (vertexSource != NULL) std::cout << "vertexSource" << std::endl;
+    if (vertexSource != NULL) std::cerr << "vertexSource" << std::endl;
 
     // load fragment shader source
     const GLchar* fragmentSource = shader->fileRead("src/shaders/fragment.fs");
-    if (fragmentSource != NULL) std::cout << "fragmentSource" << std::endl;
+    if (fragmentSource != NULL) std::cerr << "fragmentSource" << std::endl;
 
     // Create and compile the vertex shader
     vertexShader = shader->compileShader(vertexSource, GL_VERTEX_SHADER);

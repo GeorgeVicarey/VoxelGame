@@ -9,11 +9,6 @@
 #include "cube.h"
 #include <iostream>
 
-GLuint vao;
-
-Cube * cube = new Cube();
-Cube * cube1 = new Cube();
-
 Game::Game() {
     window = NULL;
     context = NULL;
@@ -36,17 +31,16 @@ bool Game::init() {
 }
 
 bool Game::objectInit() {
+    glewExperimental = TRUE;
 
-    glewExperimental = GL_TRUE;
     glewInit();
-
     glEnable(GL_DEPTH_TEST);
 
-    cube->setPos(0, 0, 0);
+    cube->setPos(-2, 0, 0);
     cube->setType(Cube::Type::Green);
     cube->createCube();
 
-    cube1->setPos(1, 0, 0);
+    cube1->setPos(0, -2, 0);
     cube1->setType(Cube::Type::Red);
     cube1->createCube();
 

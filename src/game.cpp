@@ -19,6 +19,9 @@ Game::~Game() {
     SDL_Quit();
 }
 
+/**
+ * Initialise SDL so it's setup for OpenGL.
+ */
 bool Game::init() {
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -30,6 +33,10 @@ bool Game::init() {
     return true;
 }
 
+/**
+ * Initialise GLEW and then
+ * initialise any game entities.
+ */
 bool Game::objectInit() {
     glewExperimental = TRUE;
 
@@ -47,6 +54,9 @@ bool Game::objectInit() {
     return true;
 }
 
+/**
+ * Create an SDL window that's setup for OpenGL.
+ */
 bool Game::createWindow(const char* title, int width, int height) {
     // create SDL window
     window = SDL_CreateWindow(title, 100, 100, width, height, SDL_WINDOW_OPENGL);
@@ -56,6 +66,9 @@ bool Game::createWindow(const char* title, int width, int height) {
     return true;
 }
 
+/**
+ * Create an OpenGL context then bind it to the window.
+ */
 bool Game::createContext() {
     // create opengl context and assign it to window
     context = SDL_GL_CreateContext(window);
@@ -65,11 +78,17 @@ bool Game::createContext() {
     return true;
 }
 
+/**
+ * Empty method setup to easily handle events.
+ */
 bool Game::handleEvents(SDL_Event e) {
 
     return true;
 }
 
+/**
+ * Games update method.
+ */
 bool Game::update() {
     cube->update();
     cube1->update();
@@ -77,6 +96,10 @@ bool Game::update() {
     return true;
 }
 
+
+/**
+ * Games render method.
+ */
 bool Game::render() {
     // Clear the screen to black
     glClearColor(0.2f, 0.4f, 0.6f, 1.0f);
@@ -88,6 +111,9 @@ bool Game::render() {
     return true;
 }
 
+/**
+ * Swap out the openGL buffer to be called at every tick.
+ */
 void Game::swapBuffers() {
     SDL_GL_SwapWindow(window);
 }

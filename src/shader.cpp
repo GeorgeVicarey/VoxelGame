@@ -9,6 +9,9 @@
 #include <iostream>
 #include "shader.h"
 
+/**
+ * Read in a shader from source.
+ */
 const GLchar* Shader::fileRead(std::string filename) {
 
     //Open file
@@ -32,6 +35,9 @@ const GLchar* Shader::fileRead(std::string filename) {
     return NULL;
 }
 
+/**
+ * Compile a shader.
+ */
 GLuint Shader::compileShader(const GLchar* source, GLenum shaderType) {
     GLuint shader = glCreateShader(shaderType);
     glShaderSource(shader, 1, &source, NULL);
@@ -40,6 +46,9 @@ GLuint Shader::compileShader(const GLchar* source, GLenum shaderType) {
     return shader;
 }
 
+/**
+ * Compile multiple shaders into a Program.
+ */
 GLuint Shader::compileProgram(GLuint vertex, GLuint fragment) {
     GLuint program = glCreateProgram();
     glAttachShader(program, vertex);
@@ -47,8 +56,3 @@ GLuint Shader::compileProgram(GLuint vertex, GLuint fragment) {
 
     return program;
 }
-
-
-//shaderProgram = glCreateProgram();
-//glAttachShader(shaderProgram, vertexShader);
-//glAttachShader(shaderProgram, fragmentShader);

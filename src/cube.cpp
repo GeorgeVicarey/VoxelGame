@@ -8,14 +8,33 @@
 #include "cube.h"
 
 Cube::Cube() {
+    // Initialise variables to zero
+    shader = 0;
+    shaderProgram = 0;
+    fragmentShader = 0;
+    vertexShader = 0;
+    vao = 0;
+    vbo = 0;
+    ebo = 0;
+    x = 0; y = 0; z = 0;
+    r = 0; g = 0; b = 0;
+    uniTrans = 0;
 }
 
+/**
+ * A simple setter for the Cubes positions.
+ * X, Y & Z are the cubes world positions.
+ */
 void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
     x = X;
     y = Y;
     z = Z;
 }
 
+/**
+ * Setter to set type of cube.
+ * Type is an Enum.
+ */
 void Cube::setType(Type type) {
     switch (type) {
         case Type::Red:
@@ -53,12 +72,17 @@ Cube::~Cube() {
     glDeleteBuffers(1, &vbo);
 }
 
+/**
+ * Creates the actual cube.
+ */
 void Cube::createCube() {
-
+    // Create the shader program to be used to render the cube
     createShader();
 
+    // set the vertices for the cube so it's centered around
+    // the cubes X,Y,Z position. This includes the colours.
     GLfloat vertices[] = {
-            //X,    Y,     Z,    R,    G,    B
+            //X,    Y,     Z,             R, G, B
             x - 0.5f, y - 0.5f, z - 0.5f, r, g, b,      // 0
             x + 0.5f, y - 0.5f, z - 0.5f, r, g, b,      // 1
             x + 0.5f, y + 0.5f, z - 0.5f, r, g, b,      // 2
@@ -70,6 +94,7 @@ void Cube::createCube() {
             x - 0.5f, y + 0.5f, z + 0.5f, r, g, b,      // 7
      };
 
+    // An element array to save using 36 vertices.
     GLuint elements[] = {
             0, 1, 2, 2, 3, 0,
             4, 5, 6, 6, 7, 4,
@@ -83,14 +108,17 @@ void Cube::createCube() {
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
+    // pass teh vertices data to the VBO
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // Create an element array
     glGenBuffers(1, &ebo);
 
+    // create and then bind the Vertex Array Object
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
+    // Bind the EBO and then pass teh element data to it.
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements,
     GL_STATIC_DRAW);
@@ -100,31 +128,31 @@ void Cube::createCube() {
     glUseProgram(shaderProgram);
 
     // Specify the layout of the vertex data
+    // First 3 vertices are Position
     GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
     glEnableVertexAttribArray(posAttrib);
     glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), 0);
 
-    GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
+    // vertices 4,5,6 are Colour
+    GLint colAttrib = glGetAttribLocation(shaderProgram, "colour");
     glEnableVertexAttribArray(colAttrib);
     glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),
             (void*) (3 * sizeof(GLfloat)));
 }
 
 void Cube::update() {
+    // Use the shader program compiled earlier.
     glUseProgram(shaderProgram);
 
-    // Calculate transformation
-//    trans = glm::rotate(trans, (float) clock() / (float) CLOCKS_PER_SEC * 0.01f,
-//            glm::vec3(0.0f, 0.0f, 1.0f));
-
     uniTrans = glGetUniformLocation(shaderProgram, "model");
-//    glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
 
+    // calculate the view matrix and pass it to the shader program
     glm::mat4 view = glm::lookAt(glm::vec3(1.2f, 1.2f, 1.2f), glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.0f, 0.0f, 1.0f));
     GLint uniView = glGetUniformLocation(shaderProgram, "view");
     glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
 
+    // calculaet projection matrix and pass it to the shader program
     glm::mat4 proj = glm::perspective(45.0f, 800.0f / 600.0f, 1.0f, 10.0f);
     GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
     glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));

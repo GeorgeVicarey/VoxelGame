@@ -32,8 +32,7 @@ class Game {
         SDL_Window* window;
         SDL_GLContext context;
 
-        Cube * cube = new Cube();
-        Cube * cube1 = new Cube();
+        Cube cube[5][5] = {{ }};
 };
 
 #endif /* GAME_H_ */

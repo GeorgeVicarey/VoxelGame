@@ -43,13 +43,17 @@ bool Game::objectInit() {
     glewInit();
     glEnable(GL_DEPTH_TEST);
 
-    cube->setPos(-2, 0, 0);
-    cube->setType(Cube::Type::Green);
-    cube->createCube();
-
-    cube1->setPos(0, -2, 0);
-    cube1->setType(Cube::Type::Red);
-    cube1->createCube();
+    for (int x = 0; x < 5; x++) {
+        for (int y = 0; y < 5; y++) {
+            cube[x][y].setPos(x, y, 0);
+            if ((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1)) {
+                cube[x][y].setType(Cube::Type::Red);
+            } else {
+                cube[x][y].setType(Cube::Type::Blue);
+            }
+            cube[x][y].createCube();
+        }
+    }
 
     return true;
 }
@@ -90,12 +94,14 @@ bool Game::handleEvents(SDL_Event e) {
  * Games update method.
  */
 bool Game::update() {
-    cube->update();
-    cube1->update();
+    for (int x = 0; x < 5; x++) {
+        for (int y = 0; y < 5; y++) {
+            cube[x][y].update();
+        }
+    }
 
     return true;
 }
-
 
 /**
  * Games render method.
@@ -105,8 +111,11 @@ bool Game::render() {
     glClearColor(0.2f, 0.4f, 0.6f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    cube->draw();
-    cube1->draw();
+    for (int x = 0; x < 5; x++) {
+        for (int y = 0; y < 5; y++) {
+            cube[x][y].draw();
+        }
+    }
 
     return true;
 }

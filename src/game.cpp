@@ -38,7 +38,7 @@ bool Game::init() {
  * initialise any game entities.
  */
 bool Game::objectInit() {
-    glewExperimental = TRUE;
+    glewExperimental = true;
 
     glewInit();
     glEnable(GL_DEPTH_TEST);

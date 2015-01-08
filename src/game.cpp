@@ -120,6 +120,9 @@ bool Game::update() {
 
 /**
  * Games render method.
+ *
+ *
+ * @return true if everything rendered okay, false otherwise
  */
 bool Game::render() {
     // Clear the screen to black

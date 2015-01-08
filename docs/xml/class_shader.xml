@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_shader" kind="class" language="C++" prot="public">
+    <compoundname>Shader</compoundname>
+    <includes refid="shader_8h" local="no">shader.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_shader_1a0c08f12ef73e5be8350a1b49997f2233" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const GLchar *</type>
+        <definition>const GLchar * Shader::fileRead</definition>
+        <argsstring>(std::string)</argsstring>
+        <name>fileRead</name>
+        <param>
+          <type>std::string</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read in a shader from source. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.h" line="14" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.cpp" bodystart="15" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_1a7875de00f62575d9d1820a6675ea0bde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint Shader::compileShader</definition>
+        <argsstring>(const GLchar *source, GLenum type)</argsstring>
+        <name>compileShader</name>
+        <param>
+          <type>const GLchar *</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>GLenum</type>
+          <declname>type</declname>
+          <defname>shaderType</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compile a shader. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.h" line="15" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.cpp" bodystart="41" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_1a8a9dedc118ac992ad11e2b4b62e78abf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint Shader::compileProgram</definition>
+        <argsstring>(GLuint vertex, GLuint fragment)</argsstring>
+        <name>compileProgram</name>
+        <param>
+          <type>GLuint</type>
+          <declname>vertex</declname>
+        </param>
+        <param>
+          <type>GLuint</type>
+          <declname>fragment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compile multiple shaders into a Program. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.h" line="16" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.cpp" bodystart="52" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.h" line="12" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/shader.h" bodystart="12" bodyend="17"/>
+    <listofallmembers>
+      <member refid="class_shader_1a8a9dedc118ac992ad11e2b4b62e78abf" prot="public" virt="non-virtual"><scope>Shader</scope><name>compileProgram</name></member>
+      <member refid="class_shader_1a7875de00f62575d9d1820a6675ea0bde" prot="public" virt="non-virtual"><scope>Shader</scope><name>compileShader</name></member>
+      <member refid="class_shader_1a0c08f12ef73e5be8350a1b49997f2233" prot="public" virt="non-virtual"><scope>Shader</scope><name>fileRead</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

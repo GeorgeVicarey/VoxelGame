@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="cube_8cpp">cube.cpp</innerfile>
+    <innerfile refid="cube_8h">cube.h</innerfile>
+    <innerfile refid="game_8cpp">game.cpp</innerfile>
+    <innerfile refid="game_8h">game.h</innerfile>
+    <innerfile refid="global_8h">global.h</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <innerfile refid="shader_8cpp">shader.cpp</innerfile>
+    <innerfile refid="shader_8h">shader.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/"/>
+  </compounddef>
+</doxygen>

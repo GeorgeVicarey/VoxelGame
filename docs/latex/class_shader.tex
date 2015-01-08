@@ -1,0 +1,66 @@
+\hypertarget{class_shader}{}\section{Shader Class Reference}
+\label{class_shader}\index{Shader@{Shader}}
+
+
+{\ttfamily \#include $<$shader.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const G\+Lchar $\ast$ \hyperlink{class_shader_a0c08f12ef73e5be8350a1b49997f2233}{file\+Read} (std\+::string)
+\item 
+G\+Luint \hyperlink{class_shader_a7875de00f62575d9d1820a6675ea0bde}{compile\+Shader} (const G\+Lchar $\ast$source, G\+Lenum type)
+\item 
+G\+Luint \hyperlink{class_shader_a8a9dedc118ac992ad11e2b4b62e78abf}{compile\+Program} (G\+Luint vertex, G\+Luint fragment)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file shader.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_shader_a8a9dedc118ac992ad11e2b4b62e78abf}{}\index{Shader@{Shader}!compile\+Program@{compile\+Program}}
+\index{compile\+Program@{compile\+Program}!Shader@{Shader}}
+\subsubsection[{compile\+Program}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Shader\+::compile\+Program (
+\begin{DoxyParamCaption}
+\item[{G\+Luint}]{vertex, }
+\item[{G\+Luint}]{fragment}
+\end{DoxyParamCaption}
+)}\label{class_shader_a8a9dedc118ac992ad11e2b4b62e78abf}
+Compile multiple shaders into a Program. 
+
+Definition at line 52 of file shader.\+cpp.
+
+\hypertarget{class_shader_a7875de00f62575d9d1820a6675ea0bde}{}\index{Shader@{Shader}!compile\+Shader@{compile\+Shader}}
+\index{compile\+Shader@{compile\+Shader}!Shader@{Shader}}
+\subsubsection[{compile\+Shader}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Shader\+::compile\+Shader (
+\begin{DoxyParamCaption}
+\item[{const G\+Lchar $\ast$}]{source, }
+\item[{G\+Lenum}]{shader\+Type}
+\end{DoxyParamCaption}
+)}\label{class_shader_a7875de00f62575d9d1820a6675ea0bde}
+Compile a shader. 
+
+Definition at line 41 of file shader.\+cpp.
+
+\hypertarget{class_shader_a0c08f12ef73e5be8350a1b49997f2233}{}\index{Shader@{Shader}!file\+Read@{file\+Read}}
+\index{file\+Read@{file\+Read}!Shader@{Shader}}
+\subsubsection[{file\+Read}]{\setlength{\rightskip}{0pt plus 5cm}const G\+Lchar $\ast$ Shader\+::file\+Read (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{filename}
+\end{DoxyParamCaption}
+)}\label{class_shader_a0c08f12ef73e5be8350a1b49997f2233}
+Read in a shader from source. 
+
+Definition at line 15 of file shader.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{shader_8h}{shader.\+h}\item 
+src/\hyperlink{shader_8cpp}{shader.\+cpp}\end{DoxyCompactItemize}

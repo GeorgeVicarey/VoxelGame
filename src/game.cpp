@@ -21,6 +21,8 @@ Game::~Game() {
 
 /**
  * Initialise SDL so it's setup for OpenGL.
+ *
+ * @return true if everything initiated okay, false otherwise
  */
 bool Game::init() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -36,6 +38,8 @@ bool Game::init() {
 /**
  * Initialise GLEW and then
  * initialise any game entities.
+ *
+ * @return true if everything initiated okay, false otherwise
  */
 bool Game::objectInit() {
     glewExperimental = true;
@@ -60,6 +64,11 @@ bool Game::objectInit() {
 
 /**
  * Create an SDL window that's setup for OpenGL.
+ *
+ * @param title - The window title
+ * @param width - Window width
+ * @param height - Window height
+ * @return true if everything initiated okay, false otherwise
  */
 bool Game::createWindow(const char* title, int width, int height) {
     // create SDL window
@@ -72,6 +81,8 @@ bool Game::createWindow(const char* title, int width, int height) {
 
 /**
  * Create an OpenGL context then bind it to the window.
+ *
+ * @return true if everything created okay, false otherwise
  */
 bool Game::createContext() {
     // create opengl context and assign it to window
@@ -84,6 +95,8 @@ bool Game::createContext() {
 
 /**
  * Empty method setup to easily handle events.
+ *
+ * @return true if everything handled okay, false otherwise
  */
 bool Game::handleEvents(SDL_Event e) {
 
@@ -92,6 +105,8 @@ bool Game::handleEvents(SDL_Event e) {
 
 /**
  * Games update method.
+ *
+ * @return true if everything update successful, false otherwise
  */
 bool Game::update() {
     for (int x = 0; x < 5; x++) {

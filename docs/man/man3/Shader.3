@@ -1,0 +1,44 @@
+.TH "Shader" 3 "Thu Jan 8 2015" "Version v0.1" "Voxel Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Shader \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <shader\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const GLchar * \fBfileRead\fP (std::string)"
+.br
+.ti -1c
+.RI "GLuint \fBcompileShader\fP (const GLchar *source, GLenum type)"
+.br
+.ti -1c
+.RI "GLuint \fBcompileProgram\fP (GLuint vertex, GLuint fragment)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file shader\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "GLuint Shader::compileProgram (GLuint vertex, GLuint fragment)"
+Compile multiple shaders into a Program\&. 
+.PP
+Definition at line 52 of file shader\&.cpp\&.
+.SS "GLuint Shader::compileShader (const GLchar * source, GLenum shaderType)"
+Compile a shader\&. 
+.PP
+Definition at line 41 of file shader\&.cpp\&.
+.SS "const GLchar * Shader::fileRead (std::string filename)"
+Read in a shader from source\&. 
+.PP
+Definition at line 15 of file shader\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Voxel Game from the source code\&.

@@ -1,0 +1,101 @@
+.TH "Cube" 3 "Thu Jan 8 2015" "Version v0.1" "Voxel Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Cube \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cube\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBRed\fP, \fBGreen\fP, \fBBlue\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCube\fP ()"
+.br
+.ti -1c
+.RI "\fB~Cube\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPos\fP (GLfloat X, GLfloat Y, GLfloat Z)"
+.br
+.ti -1c
+.RI "void \fBsetType\fP (\fBType\fP)"
+.br
+.ti -1c
+.RI "void \fBcreateProgram\fP ()"
+.br
+.ti -1c
+.RI "void \fBcreateCube\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBdraw\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 13 of file cube\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCube::Type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIRed \fP\fP
+.TP
+\fB\fIGreen \fP\fP
+.TP
+\fB\fIBlue \fP\fP
+.PP
+Definition at line 15 of file cube\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Cube::Cube ()"
+
+.PP
+Definition at line 10 of file cube\&.cpp\&.
+.SS "Cube::~Cube ()"
+
+.PP
+Definition at line 66 of file cube\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Cube::createCube ()"
+Creates the actual cube\&. 
+.PP
+Definition at line 78 of file cube\&.cpp\&.
+.SS "void Cube::createProgram ()"
+
+.SS "void Cube::draw ()"
+
+.PP
+Definition at line 161 of file cube\&.cpp\&.
+.SS "void Cube::setPos (GLfloat X, GLfloat Y, GLfloat Z)"
+A simple setter for the Cubes positions\&. X, Y & Z are the cubes world positions\&. 
+.PP
+Definition at line 28 of file cube\&.cpp\&.
+.SS "void Cube::setType (\fBType\fP type)"
+Setter to set type of cube\&. Type is an Enum\&. 
+.PP
+Definition at line 38 of file cube\&.cpp\&.
+.SS "void Cube::update ()"
+
+.PP
+Definition at line 143 of file cube\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Voxel Game from the source code\&.

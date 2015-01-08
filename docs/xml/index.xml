@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.9.1">
+  <compound refid="class_cube" kind="class"><name>Cube</name>
+    <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcf" kind="enum"><name>Type</name></member>
+    <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfaedfe204f7f5634d546c5baaa449f2f64" kind="enumvalue"><name>Red</name></member>
+    <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfa69ec033c662741ad033ae8e9fcea06a0" kind="enumvalue"><name>Green</name></member>
+    <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfada12dd13048ffd83ce6870545c02a338" kind="enumvalue"><name>Blue</name></member>
+    <member refid="class_cube_1aa99a2f90b812d7c94f3fa2117e67bd73" kind="variable"><name>shader</name></member>
+    <member refid="class_cube_1a42f271539cfcaa4a0c3461caf2707ce2" kind="variable"><name>shaderProgram</name></member>
+    <member refid="class_cube_1a302d9a8db6c6aa32893034b4d00f5545" kind="variable"><name>fragmentShader</name></member>
+    <member refid="class_cube_1a5ce86225e52a1ef975a327ceb922c6f9" kind="variable"><name>vertexShader</name></member>
+    <member refid="class_cube_1ae9287dd7d9095d2ea1a0981d2a7666fc" kind="variable"><name>vao</name></member>
+    <member refid="class_cube_1a5b9f5238b31be4aae7d46c93e5eb18ff" kind="variable"><name>vbo</name></member>
+    <member refid="class_cube_1a2ce9ffc7d2ae5720d20ae28cbbca6b97" kind="variable"><name>ebo</name></member>
+    <member refid="class_cube_1aa0f45501cb1c2804b036cf409e86c2bb" kind="variable"><name>x</name></member>
+    <member refid="class_cube_1a238c6709024c0623893a468ff944a09b" kind="variable"><name>y</name></member>
+    <member refid="class_cube_1a4d617fd0689e0176c501e52b1034f94f" kind="variable"><name>z</name></member>
+    <member refid="class_cube_1a3ead4e46f4a9360cba906dd457d4f3ff" kind="variable"><name>r</name></member>
+    <member refid="class_cube_1a2f71007e60e0fe3f98b1fa8f76d05775" kind="variable"><name>g</name></member>
+    <member refid="class_cube_1a6ec601ce198fddfc51d594a09ed473b9" kind="variable"><name>b</name></member>
+    <member refid="class_cube_1af06cde0432ed124525ff2d06a6a0cdfe" kind="variable"><name>uniTrans</name></member>
+    <member refid="class_cube_1a126008b3de6435aa9df2ee3d997cc7df" kind="variable"><name>trans</name></member>
+    <member refid="class_cube_1a06f3d86fb63e3aad08623610aa3c17b4" kind="function"><name>Cube</name></member>
+    <member refid="class_cube_1aa814e979cecb8c451fdb332ded2cea1e" kind="function"><name>~Cube</name></member>
+    <member refid="class_cube_1abd9a9a045a06398c14c3430953b82963" kind="function"><name>setPos</name></member>
+    <member refid="class_cube_1a391179a0f9a0904895b66bcea77e922d" kind="function"><name>setType</name></member>
+    <member refid="class_cube_1a114d7b0f25a28e77ce9975f833972d24" kind="function"><name>createProgram</name></member>
+    <member refid="class_cube_1a844b34e7e438544f87350019e9ff351c" kind="function"><name>createCube</name></member>
+    <member refid="class_cube_1a2eb5e485e2ced5470b51a783b2ecddb1" kind="function"><name>update</name></member>
+    <member refid="class_cube_1ab26b72a81376fd5dc4fcc7f0b715b087" kind="function"><name>draw</name></member>
+    <member refid="class_cube_1aaf7a64c5cdfdca4521fa9d6fb769ffdd" kind="function"><name>createShader</name></member>
+  </compound>
+  <compound refid="class_game" kind="class"><name>Game</name>
+    <member refid="class_game_1adc376cc3011b5c8f1c3897626100174c" kind="variable"><name>window</name></member>
+    <member refid="class_game_1ab6c08f102e9e844ec74cca8403bd0436" kind="variable"><name>context</name></member>
+    <member refid="class_game_1a37e35f133f719b034a28029105feeaf3" kind="variable"><name>cube</name></member>
+    <member refid="class_game_1ad59df6562a58a614fda24622d3715b65" kind="function"><name>Game</name></member>
+    <member refid="class_game_1ae3d112ca6e0e55150d2fdbc704474530" kind="function"><name>~Game</name></member>
+    <member refid="class_game_1a8ff3a6838bad4ea9493c103f96d7bff3" kind="function"><name>init</name></member>
+    <member refid="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" kind="function"><name>objectInit</name></member>
+    <member refid="class_game_1ab31b2a70de036dcdd67221dbcc6288de" kind="function"><name>createWindow</name></member>
+    <member refid="class_game_1aa0760fcf071caa67545b9ec23635ffbe" kind="function"><name>createContext</name></member>
+    <member refid="class_game_1ad6de67415ab8c9e92fe9f44145c68b72" kind="function"><name>handleEvents</name></member>
+    <member refid="class_game_1a5226f890e2733208c248c97f49e351f5" kind="function"><name>update</name></member>
+    <member refid="class_game_1af0bedb9e790940efdf41be562deb544d" kind="function"><name>render</name></member>
+    <member refid="class_game_1a57b742722cf4904cc32a0bbdef8ab128" kind="function"><name>swapBuffers</name></member>
+  </compound>
+  <compound refid="class_shader" kind="class"><name>Shader</name>
+    <member refid="class_shader_1a0c08f12ef73e5be8350a1b49997f2233" kind="function"><name>fileRead</name></member>
+    <member refid="class_shader_1a7875de00f62575d9d1820a6675ea0bde" kind="function"><name>compileShader</name></member>
+    <member refid="class_shader_1a8a9dedc118ac992ad11e2b4b62e78abf" kind="function"><name>compileProgram</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="cube_8cpp" kind="file"><name>cube.cpp</name>
+  </compound>
+  <compound refid="cube_8h" kind="file"><name>cube.h</name>
+  </compound>
+  <compound refid="game_8cpp" kind="file"><name>game.cpp</name>
+  </compound>
+  <compound refid="game_8h" kind="file"><name>game.h</name>
+    <member refid="game_8h_1abcde84ea0ef5f934384e4620f092c85a" kind="define"><name>GLEW_STATIC</name></member>
+  </compound>
+  <compound refid="global_8h" kind="file"><name>global.h</name>
+    <member refid="global_8h_1abcde84ea0ef5f934384e4620f092c85a" kind="define"><name>GLEW_STATIC</name></member>
+    <member refid="global_8h_1a816ab7d5c2ce1f0a01216042837beb93" kind="define"><name>GLM_FORCE_RADIANS</name></member>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a2474a5474cbff19523a51eb1de01cda4" kind="variable"><name>width</name></member>
+    <member refid="main_8cpp_1ad12fc34ce789bce6c8a05d8a17138534" kind="variable"><name>height</name></member>
+    <member refid="main_8cpp_1a8214780964530800368b406c681fd1d9" kind="variable"><name>title</name></member>
+    <member refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="shader_8cpp" kind="file"><name>shader.cpp</name>
+  </compound>
+  <compound refid="shader_8h" kind="file"><name>shader.h</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

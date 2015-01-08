@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_game" kind="class" language="C++" prot="public">
+    <compoundname>Game</compoundname>
+    <includes refid="game_8h" local="no">game.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_game_1adc376cc3011b5c8f1c3897626100174c" prot="private" static="no" mutable="no">
+        <type>SDL_Window *</type>
+        <definition>SDL_Window* Game::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="32" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_1ab6c08f102e9e844ec74cca8403bd0436" prot="private" static="no" mutable="no">
+        <type>SDL_GLContext</type>
+        <definition>SDL_GLContext Game::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="33" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_1a37e35f133f719b034a28029105feeaf3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_cube" kindref="compound">Cube</ref></type>
+        <definition>Cube Game::cube[5][5]</definition>
+        <argsstring>[5][5]</argsstring>
+        <name>cube</name>
+        <initializer>= {{ }}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="35" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_game_1ad59df6562a58a614fda24622d3715b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Game::Game</definition>
+        <argsstring>()</argsstring>
+        <name>Game</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="20" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1ae3d112ca6e0e55150d2fdbc704474530" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Game::~Game</definition>
+        <argsstring>()</argsstring>
+        <name>~Game</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="21" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1a8ff3a6838bad4ea9493c103f96d7bff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialise SDL so it&apos;s setup for OpenGL.</para><para><simplesect kind="return"><para>true if everything initiated okay, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="22" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="27" bodyend="36"/>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::objectInit</definition>
+        <argsstring>()</argsstring>
+        <name>objectInit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialise GLEW and then initialise any game entities.</para><para><simplesect kind="return"><para>true if everything initiated okay, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="23" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="44" bodyend="63"/>
+        <references refid="class_cube_1abd9a9a045a06398c14c3430953b82963" compoundref="cube_8cpp" startline="28" endline="32">Cube::setPos</references>
+        <references refid="class_cube_1a391179a0f9a0904895b66bcea77e922d" compoundref="cube_8cpp" startline="38" endline="64">Cube::setType</references>
+        <references refid="class_cube_1a844b34e7e438544f87350019e9ff351c" compoundref="cube_8cpp" startline="78" endline="141">Cube::createCube</references>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1ab31b2a70de036dcdd67221dbcc6288de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::createWindow</definition>
+        <argsstring>(const char *, int, int)</argsstring>
+        <name>createWindow</name>
+        <param>
+          <type>const char *</type>
+          <defname>title</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an SDL window that&apos;s setup for OpenGL.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- The window title </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Window width </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Window height </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if everything initiated okay, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="24" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="73" bodyend="80"/>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1aa0760fcf071caa67545b9ec23635ffbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::createContext</definition>
+        <argsstring>()</argsstring>
+        <name>createContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an OpenGL context then bind it to the window.</para><para><simplesect kind="return"><para>true if everything created okay, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="25" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="87" bodyend="94"/>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1ad6de67415ab8c9e92fe9f44145c68b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::handleEvents</definition>
+        <argsstring>(SDL_Event)</argsstring>
+        <name>handleEvents</name>
+        <param>
+          <type>SDL_Event</type>
+          <defname>e</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Empty method setup to easily handle events.</para><para><simplesect kind="return"><para>true if everything handled okay, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="26" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="101" bodyend="104"/>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1a5226f890e2733208c248c97f49e351f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Games update method.</para><para><simplesect kind="return"><para>true if everything update successful, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="27" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="111" bodyend="119"/>
+        <references refid="class_cube_1a2eb5e485e2ced5470b51a783b2ecddb1" compoundref="cube_8cpp" startline="143" endline="159">Cube::update</references>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1af0bedb9e790940efdf41be562deb544d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Game::render</definition>
+        <argsstring>()</argsstring>
+        <name>render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Games render method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="28" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="124" bodyend="136"/>
+        <references refid="class_cube_1ab26b72a81376fd5dc4fcc7f0b715b087" compoundref="cube_8cpp" startline="161" endline="166">Cube::draw</references>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_1a57b742722cf4904cc32a0bbdef8ab128" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Game::swapBuffers</definition>
+        <argsstring>()</argsstring>
+        <name>swapBuffers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap out the openGL buffer to be called at every tick. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="29" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.cpp" bodystart="141" bodyend="143"/>
+        <referencedby refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="main_8cpp" startline="17" endline="76">main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" line="18" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/game.h" bodystart="18" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_game_1ab6c08f102e9e844ec74cca8403bd0436" prot="private" virt="non-virtual"><scope>Game</scope><name>context</name></member>
+      <member refid="class_game_1aa0760fcf071caa67545b9ec23635ffbe" prot="public" virt="non-virtual"><scope>Game</scope><name>createContext</name></member>
+      <member refid="class_game_1ab31b2a70de036dcdd67221dbcc6288de" prot="public" virt="non-virtual"><scope>Game</scope><name>createWindow</name></member>
+      <member refid="class_game_1a37e35f133f719b034a28029105feeaf3" prot="private" virt="non-virtual"><scope>Game</scope><name>cube</name></member>
+      <member refid="class_game_1ad59df6562a58a614fda24622d3715b65" prot="public" virt="non-virtual"><scope>Game</scope><name>Game</name></member>
+      <member refid="class_game_1ad6de67415ab8c9e92fe9f44145c68b72" prot="public" virt="non-virtual"><scope>Game</scope><name>handleEvents</name></member>
+      <member refid="class_game_1a8ff3a6838bad4ea9493c103f96d7bff3" prot="public" virt="non-virtual"><scope>Game</scope><name>init</name></member>
+      <member refid="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" prot="public" virt="non-virtual"><scope>Game</scope><name>objectInit</name></member>
+      <member refid="class_game_1af0bedb9e790940efdf41be562deb544d" prot="public" virt="non-virtual"><scope>Game</scope><name>render</name></member>
+      <member refid="class_game_1a57b742722cf4904cc32a0bbdef8ab128" prot="public" virt="non-virtual"><scope>Game</scope><name>swapBuffers</name></member>
+      <member refid="class_game_1a5226f890e2733208c248c97f49e351f5" prot="public" virt="non-virtual"><scope>Game</scope><name>update</name></member>
+      <member refid="class_game_1adc376cc3011b5c8f1c3897626100174c" prot="private" virt="non-virtual"><scope>Game</scope><name>window</name></member>
+      <member refid="class_game_1ae3d112ca6e0e55150d2fdbc704474530" prot="public" virt="non-virtual"><scope>Game</scope><name>~Game</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

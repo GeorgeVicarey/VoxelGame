@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_cube" kind="class" language="C++" prot="public">
+    <compoundname>Cube</compoundname>
+    <includes refid="cube_8h" local="no">cube.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcf" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfaedfe204f7f5634d546c5baaa449f2f64" prot="public">
+          <name>Red</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfa69ec033c662741ad033ae8e9fcea06a0" prot="public">
+          <name>Green</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfada12dd13048ffd83ce6870545c02a338" prot="public">
+          <name>Blue</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="15" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="15" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_cube_1aa99a2f90b812d7c94f3fa2117e67bd73" prot="private" static="no" mutable="no">
+        <type><ref refid="class_shader" kindref="compound">Shader</ref> *</type>
+        <definition>Shader* Cube::shader</definition>
+        <argsstring></argsstring>
+        <name>shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="29" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a42f271539cfcaa4a0c3461caf2707ce2" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::shaderProgram</definition>
+        <argsstring></argsstring>
+        <name>shaderProgram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="30" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a302d9a8db6c6aa32893034b4d00f5545" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::fragmentShader</definition>
+        <argsstring></argsstring>
+        <name>fragmentShader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="30" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a5ce86225e52a1ef975a327ceb922c6f9" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::vertexShader</definition>
+        <argsstring></argsstring>
+        <name>vertexShader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="30" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1ae9287dd7d9095d2ea1a0981d2a7666fc" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::vao</definition>
+        <argsstring></argsstring>
+        <name>vao</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="31" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a5b9f5238b31be4aae7d46c93e5eb18ff" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::vbo</definition>
+        <argsstring></argsstring>
+        <name>vbo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="31" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a2ce9ffc7d2ae5720d20ae28cbbca6b97" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Cube::ebo</definition>
+        <argsstring></argsstring>
+        <name>ebo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="31" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1aa0f45501cb1c2804b036cf409e86c2bb" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="32" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a238c6709024c0623893a468ff944a09b" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="32" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a4d617fd0689e0176c501e52b1034f94f" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="32" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a3ead4e46f4a9360cba906dd457d4f3ff" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::r</definition>
+        <argsstring></argsstring>
+        <name>r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="33" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a2f71007e60e0fe3f98b1fa8f76d05775" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::g</definition>
+        <argsstring></argsstring>
+        <name>g</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="33" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a6ec601ce198fddfc51d594a09ed473b9" prot="private" static="no" mutable="no">
+        <type>GLfloat</type>
+        <definition>GLfloat Cube::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="33" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1af06cde0432ed124525ff2d06a6a0cdfe" prot="private" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint Cube::uniTrans</definition>
+        <argsstring></argsstring>
+        <name>uniTrans</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="34" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_1a126008b3de6435aa9df2ee3d997cc7df" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Cube::trans</definition>
+        <argsstring></argsstring>
+        <name>trans</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="35" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cube_1a06f3d86fb63e3aad08623610aa3c17b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Cube::Cube</definition>
+        <argsstring>()</argsstring>
+        <name>Cube</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="19" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="10" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1aa814e979cecb8c451fdb332ded2cea1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Cube::~Cube</definition>
+        <argsstring>()</argsstring>
+        <name>~Cube</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="20" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="66" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1abd9a9a045a06398c14c3430953b82963" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::setPos</definition>
+        <argsstring>(GLfloat X, GLfloat Y, GLfloat Z)</argsstring>
+        <name>setPos</name>
+        <param>
+          <type>GLfloat</type>
+          <declname>X</declname>
+        </param>
+        <param>
+          <type>GLfloat</type>
+          <declname>Y</declname>
+        </param>
+        <param>
+          <type>GLfloat</type>
+          <declname>Z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A simple setter for the Cubes positions. X, Y &amp; Z are the cubes world positions. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="21" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="28" bodyend="32"/>
+        <referencedby refid="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" compoundref="game_8cpp" startline="44" endline="63">Game::objectInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1a391179a0f9a0904895b66bcea77e922d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::setType</definition>
+        <argsstring>(Type)</argsstring>
+        <name>setType</name>
+        <param>
+          <type><ref refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcf" kindref="member">Type</ref></type>
+          <defname>type</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Setter to set type of cube. Type is an Enum. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="22" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="38" bodyend="64"/>
+        <referencedby refid="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" compoundref="game_8cpp" startline="44" endline="63">Game::objectInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1a114d7b0f25a28e77ce9975f833972d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::createProgram</definition>
+        <argsstring>()</argsstring>
+        <name>createProgram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1a844b34e7e438544f87350019e9ff351c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::createCube</definition>
+        <argsstring>()</argsstring>
+        <name>createCube</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates the actual cube. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="24" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="78" bodyend="141"/>
+        <referencedby refid="class_game_1ad6eb621ba94b849e13ea89e8adc5692a" compoundref="game_8cpp" startline="44" endline="63">Game::objectInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1a2eb5e485e2ced5470b51a783b2ecddb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="25" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="143" bodyend="159"/>
+        <referencedby refid="class_game_1a5226f890e2733208c248c97f49e351f5" compoundref="game_8cpp" startline="111" endline="119">Game::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_1ab26b72a81376fd5dc4fcc7f0b715b087" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::draw</definition>
+        <argsstring>()</argsstring>
+        <name>draw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="26" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="161" bodyend="166"/>
+        <referencedby refid="class_game_1af0bedb9e790940efdf41be562deb544d" compoundref="game_8cpp" startline="124" endline="136">Game::render</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_cube_1aaf7a64c5cdfdca4521fa9d6fb769ffdd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cube::createShader</definition>
+        <argsstring>()</argsstring>
+        <name>createShader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="28" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.cpp" bodystart="169" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" line="13" column="1" bodyfile="C:/Users/George/Documents/workspaceSDL/VoxelGame/src/cube.h" bodystart="13" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_cube_1a6ec601ce198fddfc51d594a09ed473b9" prot="private" virt="non-virtual"><scope>Cube</scope><name>b</name></member>
+      <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfada12dd13048ffd83ce6870545c02a338" prot="public" virt="non-virtual"><scope>Cube</scope><name>Blue</name></member>
+      <member refid="class_cube_1a844b34e7e438544f87350019e9ff351c" prot="public" virt="non-virtual"><scope>Cube</scope><name>createCube</name></member>
+      <member refid="class_cube_1a114d7b0f25a28e77ce9975f833972d24" prot="public" virt="non-virtual"><scope>Cube</scope><name>createProgram</name></member>
+      <member refid="class_cube_1aaf7a64c5cdfdca4521fa9d6fb769ffdd" prot="private" virt="non-virtual"><scope>Cube</scope><name>createShader</name></member>
+      <member refid="class_cube_1a06f3d86fb63e3aad08623610aa3c17b4" prot="public" virt="non-virtual"><scope>Cube</scope><name>Cube</name></member>
+      <member refid="class_cube_1ab26b72a81376fd5dc4fcc7f0b715b087" prot="public" virt="non-virtual"><scope>Cube</scope><name>draw</name></member>
+      <member refid="class_cube_1a2ce9ffc7d2ae5720d20ae28cbbca6b97" prot="private" virt="non-virtual"><scope>Cube</scope><name>ebo</name></member>
+      <member refid="class_cube_1a302d9a8db6c6aa32893034b4d00f5545" prot="private" virt="non-virtual"><scope>Cube</scope><name>fragmentShader</name></member>
+      <member refid="class_cube_1a2f71007e60e0fe3f98b1fa8f76d05775" prot="private" virt="non-virtual"><scope>Cube</scope><name>g</name></member>
+      <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfa69ec033c662741ad033ae8e9fcea06a0" prot="public" virt="non-virtual"><scope>Cube</scope><name>Green</name></member>
+      <member refid="class_cube_1a3ead4e46f4a9360cba906dd457d4f3ff" prot="private" virt="non-virtual"><scope>Cube</scope><name>r</name></member>
+      <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcfaedfe204f7f5634d546c5baaa449f2f64" prot="public" virt="non-virtual"><scope>Cube</scope><name>Red</name></member>
+      <member refid="class_cube_1abd9a9a045a06398c14c3430953b82963" prot="public" virt="non-virtual"><scope>Cube</scope><name>setPos</name></member>
+      <member refid="class_cube_1a391179a0f9a0904895b66bcea77e922d" prot="public" virt="non-virtual"><scope>Cube</scope><name>setType</name></member>
+      <member refid="class_cube_1aa99a2f90b812d7c94f3fa2117e67bd73" prot="private" virt="non-virtual"><scope>Cube</scope><name>shader</name></member>
+      <member refid="class_cube_1a42f271539cfcaa4a0c3461caf2707ce2" prot="private" virt="non-virtual"><scope>Cube</scope><name>shaderProgram</name></member>
+      <member refid="class_cube_1a126008b3de6435aa9df2ee3d997cc7df" prot="private" virt="non-virtual"><scope>Cube</scope><name>trans</name></member>
+      <member refid="class_cube_1aa23329b4c4998aa957e44b6a44b9bfcf" prot="public" virt="non-virtual"><scope>Cube</scope><name>Type</name></member>
+      <member refid="class_cube_1af06cde0432ed124525ff2d06a6a0cdfe" prot="private" virt="non-virtual"><scope>Cube</scope><name>uniTrans</name></member>
+      <member refid="class_cube_1a2eb5e485e2ced5470b51a783b2ecddb1" prot="public" virt="non-virtual"><scope>Cube</scope><name>update</name></member>
+      <member refid="class_cube_1ae9287dd7d9095d2ea1a0981d2a7666fc" prot="private" virt="non-virtual"><scope>Cube</scope><name>vao</name></member>
+      <member refid="class_cube_1a5b9f5238b31be4aae7d46c93e5eb18ff" prot="private" virt="non-virtual"><scope>Cube</scope><name>vbo</name></member>
+      <member refid="class_cube_1a5ce86225e52a1ef975a327ceb922c6f9" prot="private" virt="non-virtual"><scope>Cube</scope><name>vertexShader</name></member>
+      <member refid="class_cube_1aa0f45501cb1c2804b036cf409e86c2bb" prot="private" virt="non-virtual"><scope>Cube</scope><name>x</name></member>
+      <member refid="class_cube_1a238c6709024c0623893a468ff944a09b" prot="private" virt="non-virtual"><scope>Cube</scope><name>y</name></member>
+      <member refid="class_cube_1a4d617fd0689e0176c501e52b1034f94f" prot="private" virt="non-virtual"><scope>Cube</scope><name>z</name></member>
+      <member refid="class_cube_1aa814e979cecb8c451fdb332ded2cea1e" prot="public" virt="non-virtual"><scope>Cube</scope><name>~Cube</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

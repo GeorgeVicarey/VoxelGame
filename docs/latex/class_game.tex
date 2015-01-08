@@ -1,0 +1,199 @@
+\hypertarget{class_game}{}\section{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game} ()
+\item 
+\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{$\sim$\+Game} ()
+\item 
+bool \hyperlink{class_game_a8ff3a6838bad4ea9493c103f96d7bff3}{init} ()
+\item 
+bool \hyperlink{class_game_ad6eb621ba94b849e13ea89e8adc5692a}{object\+Init} ()
+\item 
+bool \hyperlink{class_game_ab31b2a70de036dcdd67221dbcc6288de}{create\+Window} (const char $\ast$, int, int)
+\item 
+bool \hyperlink{class_game_aa0760fcf071caa67545b9ec23635ffbe}{create\+Context} ()
+\item 
+bool \hyperlink{class_game_ad6de67415ab8c9e92fe9f44145c68b72}{handle\+Events} (S\+D\+L\+\_\+\+Event)
+\item 
+bool \hyperlink{class_game_a5226f890e2733208c248c97f49e351f5}{update} ()
+\item 
+bool \hyperlink{class_game_af0bedb9e790940efdf41be562deb544d}{render} ()
+\item 
+void \hyperlink{class_game_a57b742722cf4904cc32a0bbdef8ab128}{swap\+Buffers} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file game.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}{}\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\subsubsection[{Game}]{\setlength{\rightskip}{0pt plus 5cm}Game\+::\+Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_ad59df6562a58a614fda24622d3715b65}
+
+
+Definition at line 12 of file game.\+cpp.
+
+\hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}{}\index{Game@{Game}!````~Game@{$\sim$\+Game}}
+\index{````~Game@{$\sim$\+Game}!Game@{Game}}
+\subsubsection[{$\sim$\+Game}]{\setlength{\rightskip}{0pt plus 5cm}Game\+::$\sim$\+Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_ae3d112ca6e0e55150d2fdbc704474530}
+
+
+Definition at line 17 of file game.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_aa0760fcf071caa67545b9ec23635ffbe}{}\index{Game@{Game}!create\+Context@{create\+Context}}
+\index{create\+Context@{create\+Context}!Game@{Game}}
+\subsubsection[{create\+Context}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::create\+Context (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_aa0760fcf071caa67545b9ec23635ffbe}
+Create an Open\+G\+L context then bind it to the window.
+
+\begin{DoxyReturn}{Returns}
+true if everything created okay, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file game.\+cpp.
+
+\hypertarget{class_game_ab31b2a70de036dcdd67221dbcc6288de}{}\index{Game@{Game}!create\+Window@{create\+Window}}
+\index{create\+Window@{create\+Window}!Game@{Game}}
+\subsubsection[{create\+Window}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::create\+Window (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{title, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\label{class_game_ab31b2a70de036dcdd67221dbcc6288de}
+Create an S\+D\+L window that\textquotesingle{}s setup for Open\+G\+L.
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & -\/ The window title \\
+\hline
+{\em width} & -\/ Window width \\
+\hline
+{\em height} & -\/ Window height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if everything initiated okay, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 73 of file game.\+cpp.
+
+\hypertarget{class_game_ad6de67415ab8c9e92fe9f44145c68b72}{}\index{Game@{Game}!handle\+Events@{handle\+Events}}
+\index{handle\+Events@{handle\+Events}!Game@{Game}}
+\subsubsection[{handle\+Events}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::handle\+Events (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Event}]{e}
+\end{DoxyParamCaption}
+)}\label{class_game_ad6de67415ab8c9e92fe9f44145c68b72}
+Empty method setup to easily handle events.
+
+\begin{DoxyReturn}{Returns}
+true if everything handled okay, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 101 of file game.\+cpp.
+
+\hypertarget{class_game_a8ff3a6838bad4ea9493c103f96d7bff3}{}\index{Game@{Game}!init@{init}}
+\index{init@{init}!Game@{Game}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_a8ff3a6838bad4ea9493c103f96d7bff3}
+Initialise S\+D\+L so it\textquotesingle{}s setup for Open\+G\+L.
+
+\begin{DoxyReturn}{Returns}
+true if everything initiated okay, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file game.\+cpp.
+
+\hypertarget{class_game_ad6eb621ba94b849e13ea89e8adc5692a}{}\index{Game@{Game}!object\+Init@{object\+Init}}
+\index{object\+Init@{object\+Init}!Game@{Game}}
+\subsubsection[{object\+Init}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::object\+Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_ad6eb621ba94b849e13ea89e8adc5692a}
+Initialise G\+L\+E\+W and then initialise any game entities.
+
+\begin{DoxyReturn}{Returns}
+true if everything initiated okay, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file game.\+cpp.
+
+\hypertarget{class_game_af0bedb9e790940efdf41be562deb544d}{}\index{Game@{Game}!render@{render}}
+\index{render@{render}!Game@{Game}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_af0bedb9e790940efdf41be562deb544d}
+Games render method. 
+
+Definition at line 124 of file game.\+cpp.
+
+\hypertarget{class_game_a57b742722cf4904cc32a0bbdef8ab128}{}\index{Game@{Game}!swap\+Buffers@{swap\+Buffers}}
+\index{swap\+Buffers@{swap\+Buffers}!Game@{Game}}
+\subsubsection[{swap\+Buffers}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+::swap\+Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_a57b742722cf4904cc32a0bbdef8ab128}
+Swap out the open\+G\+L buffer to be called at every tick. 
+
+Definition at line 141 of file game.\+cpp.
+
+\hypertarget{class_game_a5226f890e2733208c248c97f49e351f5}{}\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_game_a5226f890e2733208c248c97f49e351f5}
+Games update method.
+
+\begin{DoxyReturn}{Returns}
+true if everything update successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file game.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{game_8h}{game.\+h}\item 
+src/\hyperlink{game_8cpp}{game.\+cpp}\end{DoxyCompactItemize}

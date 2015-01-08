@@ -1,0 +1,146 @@
+.TH "Game" 3 "Thu Jan 8 2015" "Version v0.1" "Voxel Game" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Game \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <game\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGame\fP ()"
+.br
+.ti -1c
+.RI "\fB~Game\fP ()"
+.br
+.ti -1c
+.RI "bool \fBinit\fP ()"
+.br
+.ti -1c
+.RI "bool \fBobjectInit\fP ()"
+.br
+.ti -1c
+.RI "bool \fBcreateWindow\fP (const char *, int, int)"
+.br
+.ti -1c
+.RI "bool \fBcreateContext\fP ()"
+.br
+.ti -1c
+.RI "bool \fBhandleEvents\fP (SDL_Event)"
+.br
+.ti -1c
+.RI "bool \fBupdate\fP ()"
+.br
+.ti -1c
+.RI "bool \fBrender\fP ()"
+.br
+.ti -1c
+.RI "void \fBswapBuffers\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 18 of file game\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Game::Game ()"
+
+.PP
+Definition at line 12 of file game\&.cpp\&.
+.SS "Game::~Game ()"
+
+.PP
+Definition at line 17 of file game\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Game::createContext ()"
+Create an OpenGL context then bind it to the window\&.
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything created okay, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file game\&.cpp\&.
+.SS "bool Game::createWindow (const char * title, int width, int height)"
+Create an SDL window that's setup for OpenGL\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItitle\fP - The window title 
+.br
+\fIwidth\fP - Window width 
+.br
+\fIheight\fP - Window height 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything initiated okay, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file game\&.cpp\&.
+.SS "bool Game::handleEvents (SDL_Event e)"
+Empty method setup to easily handle events\&.
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything handled okay, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file game\&.cpp\&.
+.SS "bool Game::init ()"
+Initialise SDL so it's setup for OpenGL\&.
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything initiated okay, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file game\&.cpp\&.
+.SS "bool Game::objectInit ()"
+Initialise GLEW and then initialise any game entities\&.
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything initiated okay, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file game\&.cpp\&.
+.SS "bool Game::render ()"
+Games render method\&. 
+.PP
+Definition at line 124 of file game\&.cpp\&.
+.SS "void Game::swapBuffers ()"
+Swap out the openGL buffer to be called at every tick\&. 
+.PP
+Definition at line 141 of file game\&.cpp\&.
+.SS "bool Game::update ()"
+Games update method\&.
+.PP
+\fBReturns:\fP
+.RS 4
+true if everything update successful, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file game\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Voxel Game from the source code\&.

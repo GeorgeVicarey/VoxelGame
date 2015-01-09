@@ -7,19 +7,22 @@ CPP_SRCS += \
 ../src/cube.cpp \
 ../src/game.cpp \
 ../src/main.cpp \
-../src/shader.cpp 
+../src/shader.cpp \
+../src/world.cpp 
 
 OBJS += \
 ./src/cube.o \
 ./src/game.o \
 ./src/main.o \
-./src/shader.o 
+./src/shader.o \
+./src/world.o 
 
 CPP_DEPS += \
 ./src/cube.d \
 ./src/game.d \
 ./src/main.d \
-./src/shader.d 
+./src/shader.d \
+./src/world.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

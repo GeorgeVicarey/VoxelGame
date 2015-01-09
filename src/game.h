@@ -10,7 +10,7 @@
 
 #define GLEW_STATIC
 #include "global.h"
-#include "cube.h"
+#include "world.h"
 
 /*
  * Create an SDL window with an OpenGL context in it.
@@ -32,7 +32,7 @@ class Game {
         SDL_Window* window;
         SDL_GLContext context;
 
-        Cube cube[5][5] = {{ }};
+        World * world = new World();
 };
 
 #endif /* GAME_H_ */

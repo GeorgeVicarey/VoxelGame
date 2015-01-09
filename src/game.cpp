@@ -6,7 +6,7 @@
  */
 
 #include "game.h"
-#include "cube.h"
+#include "world.h"
 #include <iostream>
 
 Game::Game() {
@@ -47,17 +47,7 @@ bool Game::objectInit() {
     glewInit();
     glEnable(GL_DEPTH_TEST);
 
-    for (int x = 0; x < 5; x++) {
-        for (int y = 0; y < 5; y++) {
-            cube[x][y].setPos(x, y, 0);
-            if ((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1)) {
-                cube[x][y].setType(Cube::Type::Red);
-            } else {
-                cube[x][y].setType(Cube::Type::Blue);
-            }
-            cube[x][y].createCube();
-        }
-    }
+    world->createWorld();
 
     return true;
 }
@@ -109,11 +99,7 @@ bool Game::handleEvents(SDL_Event e) {
  * @return true if everything update successful, false otherwise
  */
 bool Game::update() {
-    for (int x = 0; x < 5; x++) {
-        for (int y = 0; y < 5; y++) {
-            cube[x][y].update();
-        }
-    }
+    world->update();
 
     return true;
 }
@@ -129,11 +115,7 @@ bool Game::render() {
     glClearColor(0.2f, 0.4f, 0.6f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for (int x = 0; x < 5; x++) {
-        for (int y = 0; y < 5; y++) {
-            cube[x][y].draw();
-        }
-    }
+    world->draw();
 
     return true;
 }

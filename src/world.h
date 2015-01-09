@@ -17,7 +17,7 @@ class World {
         void update();
         void draw();
     private:
-        Cube cube[5][5] = { {}};
+        Cube cube[15][15] = { {}};
 };
 
 #endif /* SRC_WORLD_H_ */

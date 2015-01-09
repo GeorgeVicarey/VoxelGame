@@ -19,8 +19,8 @@ World::World() {
  * Creates a world of cubes.
  */
 void World::createWorld() {
-    for (int x = 0; x < 5; x++) {
-        for (int y = 0; y < 5; y++) {
+    for (int x = 0; x < 15; x++) {
+        for (int y = 0; y < 15; y++) {
             cube[x][y].setPos(x, y, 0);
             if ((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1)) {
                 cube[x][y].setType(Cube::Type::Red);

@@ -4,7 +4,7 @@ compiler:
 install:
   - sudo apt-get install libglm-dev
   - sudo apt-get install libglew-dev
-  - ls -a
+  - cd Debug/
 script:
   - make clean
   - make all

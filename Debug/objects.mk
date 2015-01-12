@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lmingw32 -lglew32s -lSDL2main -lSDL2 -lopengl32
+LIBS := -lSDL2 -lGLEW -lGL
 

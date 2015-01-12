@@ -37,19 +37,19 @@ void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
  */
 void Cube::setType(Type type) {
     switch (type) {
-        case Type::Red:
+        case Cube::Red:
             r = 1.0f;
             g = 0.0f;
             b = 0.0f;
             break;
 
-        case Type::Green:
+        case Cube::Green:
             r = 0.0f;
             g = 1.0f;
             b = 0.0f;
             break;
 
-        case Type::Blue:
+        case Cube::Blue:
             r = 0.0f;
             g = 1.0f;
             b = 0.0f;

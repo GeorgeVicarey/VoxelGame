@@ -3,6 +3,7 @@ compiler:
   - clang
 install:
   - echo "yes" | sudo apt-add-repository ppa:zoogie/sdl2-snapshots
+  - echo "yes" | sudo apt-add-repository ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
   - sudo apt-get install -q gcc4.8
   - sudo apt-get install -q g++4.8

@@ -4,3 +4,6 @@ compiler:
 install:
   - sudo apt-get install libglm-dev
   - sudo apt-get install libglew-dev
+script:
+  - make clean
+  - make all

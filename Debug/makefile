@@ -46,6 +46,9 @@ VoxelGame: $(OBJS) $(USER_OBJS)
 	@echo 'Invoking: GCC C++ Linker'
 	g++  -o "VoxelGame" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
+	@echo 'copying shaders across to build'
+	mkdir src/shaders
+	cp ../../shaders src/shaders
 	@echo ' '
 
 # Other Targets

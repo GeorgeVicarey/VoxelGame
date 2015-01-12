@@ -2,10 +2,10 @@ language: cpp
 compiler:
   - gcc
 install:
-  - sudo apt-get update
-  - sudo apt-get install libglm-dev
-  - sudo apt-get install libsdl2-dev
-  - sudo apt-get install libglew-dev
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install libglm-dev
+  - sudo apt-get -qq install libsdl2-dev
+  - sudo apt-get -qq install libglew-dev
   - cd Debug/
 script:
   - make clean

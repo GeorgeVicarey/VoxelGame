@@ -23,7 +23,10 @@ Cube::Cube() {
 
 /**
  * A simple setter for the Cubes positions.
- * X, Y & Z are the cubes world positions.
+ *
+ * @param X
+ * @param Y
+ * @param Z are the cubes world positions.
  */
 void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
     x = X;
@@ -33,7 +36,8 @@ void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
 
 /**
  * Setter to set type of cube.
- * Type is an Enum.
+ *
+ * @param type is an Enum.
  */
 void Cube::setType(Type type) {
     switch (type) {

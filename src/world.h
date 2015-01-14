@@ -13,11 +13,15 @@
 class World {
     public:
         World();
+        ~World();
         void createWorld();
         void update();
         void draw();
+        void createShader();
     private:
         Cube cube[15][15] = { {}};
+        Shader* shader;
+        GLuint shaderProgram, fragmentShader, vertexShader;
 };
 
 #endif /* SRC_WORLD_H_ */

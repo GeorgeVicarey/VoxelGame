@@ -21,13 +21,11 @@ class Cube {
         void setPos(GLfloat X, GLfloat Y, GLfloat Z);
         void setType(Type);
         void createProgram();
-        void createCube();
-        void update();
-        void draw();
+        void createCube(GLuint shaderProgram);
+        void update(GLuint shaderProgram);
+        void draw(GLuint shaderProgram);
     private:
         void createShader();
-        Shader* shader;
-        GLuint shaderProgram, fragmentShader, vertexShader;
         GLuint vao, vbo, ebo;
         GLfloat x, y, z;
         GLfloat r, g, b;

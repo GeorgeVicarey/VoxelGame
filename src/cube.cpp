@@ -9,10 +9,6 @@
 
 Cube::Cube() {
     // Initialise variables to zero
-    shader = 0;
-    shaderProgram = 0;
-    fragmentShader = 0;
-    vertexShader = 0;
     vao = 0;
     vbo = 0;
     ebo = 0;
@@ -41,19 +37,19 @@ void Cube::setPos(GLfloat X, GLfloat Y, GLfloat Z) {
  */
 void Cube::setType(Type type) {
     switch (type) {
-        case Cube::Red:
+        case Type::Red:
             r = 1.0f;
             g = 0.0f;
             b = 0.0f;
             break;
 
-        case Cube::Green:
+        case Type::Green:
             r = 0.0f;
             g = 1.0f;
             b = 0.0f;
             break;
 
-        case Cube::Blue:
+        case Type::Blue:
             r = 0.0f;
             g = 1.0f;
             b = 0.0f;
@@ -68,10 +64,6 @@ void Cube::setType(Type type) {
 }
 
 Cube::~Cube() {
-    glDeleteProgram(shaderProgram);
-    glDeleteShader(fragmentShader);
-    glDeleteShader(vertexShader);
-
     glDeleteBuffers(1, &ebo);
     glDeleteBuffers(1, &vbo);
 }
@@ -79,11 +71,8 @@ Cube::~Cube() {
 /**
  * Creates the actual cube.
  */
-void Cube::createCube() {
-    // Create the shader program to be used to render the cube
-    createShader();
-
-    // set the vertices for the cube so it's centered around
+void Cube::createCube(GLuint shaderProgram) {
+    // set the vertices for the cube so it's centred around
     // the cubes X,Y,Z position. This includes the colours.
     GLfloat vertices[] = {
             //X,    Y,     Z,             R, G, B
@@ -112,7 +101,7 @@ void Cube::createCube() {
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-    // pass teh vertices data to the VBO
+    // pass the vertices data to the VBO
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // Create an element array
@@ -144,7 +133,7 @@ void Cube::createCube() {
             (void*) (3 * sizeof(GLfloat)));
 }
 
-void Cube::update() {
+void Cube::update(GLuint shaderProgram) {
     // Use the shader program compiled earlier.
     glUseProgram(shaderProgram);
 
@@ -162,29 +151,10 @@ void Cube::update() {
     glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 }
 
-void Cube::draw() {
+void Cube::draw(GLuint shaderProgram) {
     glUseProgram(shaderProgram);
     glBindVertexArray(vao);
     glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
 
-
-void Cube::createShader() {
-    // load vertex shader source
-    const GLchar* vertexSource = shader->fileRead("src/shaders/vertex.vs");
-    if (vertexSource != NULL) std::cerr << "vertexSource" << std::endl;
-
-    // load fragment shader source
-    const GLchar* fragmentSource = shader->fileRead("src/shaders/fragment.fs");
-    if (fragmentSource != NULL) std::cerr << "fragmentSource" << std::endl;
-
-    // Create and compile the vertex shader
-    vertexShader = shader->compileShader(vertexSource, GL_VERTEX_SHADER);
-
-    // Create and compile the fragment shader
-    fragmentShader =  shader->compileShader(fragmentSource, GL_FRAGMENT_SHADER);
-
-    // Link the vertex and fragment shader into a shader program
-    shaderProgram = shader->compileProgram(vertexShader, fragmentShader);
-}
